@@ -18,19 +18,54 @@
           <div class="image-grid">
             <div v-for="(image, imageIdx) in subFeature.images" 
                  :key="imageIdx" 
-                 class="image-item">
-              <img :src="getImageUrl(image.filename)" :alt="image.alt" loading="lazy">
+                 class="image-item"
+                 @click="openPreview(subFeature.images, imageIdx)">
+              <img :src="getImageUrl(image.filename)" 
+                   :alt="image.alt" 
+                   loading="lazy"
+                   :title="'点击查看大图'">
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <ImagePreview
+      :is-visible="isPreviewVisible"
+      :images="previewImages"
+      :initial-index="previewIndex"
+      @close="closePreview"
+    />
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import ImagePreview from './ImagePreview.vue'
+
 const getImageUrl = (filename) => {
   return `https://jimeng-image.iaiuse.com/3.0/model-highlights/${filename}`;
+}
+
+// 图片预览相关状态
+const isPreviewVisible = ref(false)
+const previewImages = ref([])
+const previewIndex = ref(0)
+
+// 打开预览
+const openPreview = (images, index) => {
+  previewImages.value = images.map(img => ({
+    src: getImageUrl(img.filename),
+    title: img.alt,
+    description: img.alt
+  }))
+  previewIndex.value = index
+  isPreviewVisible.value = true
+}
+
+// 关闭预览
+const closePreview = () => {
+  isPreviewVisible.value = false
 }
 
 const features = [
@@ -70,9 +105,9 @@ const features = [
         title: '分辨率提升',
         description: '支持更高分辨率输出，保持结构稳定',
         images: [
-          { filename: 'hd/scene-1.jpg', alt: '高清场景1' },
-          { filename: 'hd/scene-2.jpg', alt: '高清场景2' },
-          { filename: 'hd/scene-3.jpg', alt: '高清场景3' }
+          { filename: 'hd/scene-1.png', alt: '1K' },
+          { filename: 'hd/scene-2.png', alt: '1.5K' },
+          { filename: 'hd/scene-3.png', alt: '2K' }
         ]
       }
     ]
@@ -242,16 +277,24 @@ const features = [
 
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 25px;
   margin-top: 20px;
 }
 
+.image-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  aspect-ratio: 16/9;
+}
+
 .image-item img {
   width: 100%;
-  height: 320px;
-  border-radius: 8px;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -259,9 +302,29 @@ const features = [
   transform: scale(1.02);
 }
 
+.image-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-item:hover::after {
+  opacity: 1;
+}
+
 @media (max-width: 1200px) {
   .feature-grid {
     padding: 0 20px;
+  }
+  
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 }
 
@@ -273,19 +336,11 @@ const features = [
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .image-item img {
-    height: 240px;
-  }
 }
 
 @media (max-width: 480px) {
   .image-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .image-item img {
-    height: 260px;
   }
   
   .feature-card h3 {
