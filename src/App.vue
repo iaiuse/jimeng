@@ -43,21 +43,26 @@
           </div>
           <div class="footer-links">
             <div class="footer-column">
-              <h4>产品</h4>
+              <h4>关注我们</h4>
               <ul>
-                <li><a href="#">模型概述</a></li>
-                <li><a href="#">技术特点</a></li>
-                <li><a href="#">版本更新</a></li>
-                <li><a href="#">使用场景</a></li>
-              </ul>
-            </div>
-            <div class="footer-column">
-              <h4>资源</h4>
-              <ul>
-                <li><a href="#">提示词指南</a></li>
-                <li><a href="#">教程中心</a></li>
-                <li><a href="#">API文档</a></li>
-                <li><a href="#">常见问题</a></li>
+                <li>
+                  <a href="https://jike.xyz" target="_blank" class="social-link">
+                    <img src="/icons/jike.svg" alt="即刻" class="social-icon">
+                    即刻
+                  </a>
+                </li>
+                <li>
+                  <a href="https://xiaohongshu.com" target="_blank" class="social-link">
+                    <img src="/icons/xiaohongshu.svg" alt="小红书" class="social-icon">
+                    小红书
+                  </a>
+                </li>
+                <li>
+                  <a href="https://mp.weixin.qq.com" target="_blank" class="social-link">
+                    <img src="/icons/wechat.svg" alt="公众号" class="social-icon">
+                    公众号
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -278,6 +283,25 @@ footer {
   font-size: 0.85rem;
 }
 
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.social-link:hover {
+  color: white;
+}
+
+.social-icon {
+  width: 16px;
+  height: 16px;
+}
+
 /* Responsive styles */
 @media (max-width: 960px) {
   .main-nav {
@@ -291,6 +315,14 @@ footer {
   
   .footer-content {
     flex-direction: column;
+  }
+  
+  .footer-links {
+    width: 100%;
+  }
+  
+  .footer-column {
+    width: 100%;
   }
 }
 
