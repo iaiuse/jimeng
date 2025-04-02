@@ -4,8 +4,28 @@
       <div class="section-number">1</div>
       <h2 class="section-title">模型亮点</h2>
     </div>
+    
+    <!-- 添加浮动导航菜单 -->
+    <div class="floating-nav" :class="{ 'is-visible': showFloatingNav }">
+      <div class="nav-items">
+        <div v-for="feature in features" 
+             :key="feature.id" 
+             class="nav-item"
+             :class="{ 'active': activeSection === `feature-${feature.id}` }"
+             @click="scrollToSection(`feature-${feature.id}`)">
+          <div class="nav-item-content">
+            <div class="nav-item-title">{{ feature.title }}</div>
+            <div class="nav-item-subtitle">{{ feature.subtitle }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="feature-grid">
-      <div v-for="feature in features" :key="feature.id" class="feature-card">
+      <div v-for="feature in features" 
+           :key="feature.id" 
+           class="feature-card"
+           :id="`feature-${feature.id}`">
         <h3><span>{{ feature.title }}:</span> {{ feature.subtitle }}</h3>
         <p>{{ feature.description }}</p>
         
@@ -40,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import ImagePreview from './ImagePreview.vue'
 
 const getImageUrl = (filename) => {
@@ -195,6 +215,46 @@ const features = [
     ]
   }
 ];
+
+// 浮动导航相关
+const showFloatingNav = ref(false)
+const activeSection = ref('')
+
+// 滚动到指定区域
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+// 检查滚动位置并更新导航状态
+const checkScroll = () => {
+  // 显示/隐藏浮动导航
+  showFloatingNav.value = window.scrollY > 200
+
+  // 更新当前激活的区域
+  const sections = features.map(f => `feature-${f.id}`)
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        activeSection.value = sectionId
+        break
+      }
+    }
+  }
+}
+
+// 监听滚动事件
+onMounted(() => {
+  window.addEventListener('scroll', checkScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll)
+})
 </script>
 
 <style scoped>
@@ -345,6 +405,116 @@ const features = [
   
   .feature-card h3 {
     font-size: 1.5rem;
+  }
+}
+
+/* 修改浮动导航样式 */
+.floating-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  min-width: 200px;
+}
+
+.floating-nav.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.nav-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item-title {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-item-subtitle {
+  color: #666;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  background: #f5f9ff;
+  border-left-color: #0066cc;
+}
+
+.nav-item:hover .nav-item-title {
+  color: #0066cc;
+}
+
+.nav-item:hover .nav-item-subtitle {
+  color: #0066cc;
+}
+
+.nav-item.active {
+  background: #f5f9ff;
+  border-left-color: #0066cc;
+}
+
+.nav-item.active .nav-item-title {
+  color: #0066cc;
+}
+
+.nav-item.active .nav-item-subtitle {
+  color: #0066cc;
+}
+
+/* 响应式调整 */
+@media (max-width: 1400px) {
+  .floating-nav {
+    right: 10px;
+    min-width: 180px;
+  }
+  
+  .nav-item {
+    padding: 10px 15px;
+  }
+
+  .nav-item-title {
+    font-size: 0.95rem;
+  }
+
+  .nav-item-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-nav {
+    display: none; /* 在移动端隐藏浮动导航 */
   }
 }
 </style> 
