@@ -341,10 +341,10 @@ onUnmounted(() => {
   gap: 25px;
   margin-top: 20px;
   overflow-x: auto;
-  padding-bottom: 15px; /* 为滚动条留出空间 */
-  /* 优化滚动条样式 */
+  padding-bottom: 15px;
   scrollbar-width: thin;
   scrollbar-color: #0066cc #f0f0f0;
+  height: 500px;
 }
 
 /* 自定义滚动条样式（Webkit浏览器） */
@@ -373,14 +373,16 @@ onUnmounted(() => {
   border-radius: 8px;
   background-color: #f5f5f5;
   flex: 0 0 auto;
-  width: 500px; /* 设置一个固定的基础宽度 */
-  height: 400px; /* 增加高度 */
+  height: 100%;
+  aspect-ratio: auto;
+  min-width: 300px;
+  max-width: 800px;
 }
 
 .image-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 改为 cover 以填充整个容器 */
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -411,12 +413,7 @@ onUnmounted(() => {
   }
   
   .image-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-
-  .image-item {
-    width: 450px;
-    height: 350px;
+    height: 400px;
   }
 }
 
@@ -426,18 +423,13 @@ onUnmounted(() => {
   }
 
   .image-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .image-item {
-    width: 400px;
     height: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .image-grid {
-    grid-template-columns: 1fr;
+    height: 250px;
   }
   
   .feature-card h3 {
@@ -445,8 +437,7 @@ onUnmounted(() => {
   }
 
   .image-item {
-    width: 300px;
-    height: 250px;
+    min-width: 200px;
   }
 }
 
