@@ -336,10 +336,34 @@ onUnmounted(() => {
 }
 
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 25px;
   margin-top: 20px;
+  overflow-x: auto;
+  padding-bottom: 15px; /* 为滚动条留出空间 */
+  /* 优化滚动条样式 */
+  scrollbar-width: thin;
+  scrollbar-color: #0066cc #f0f0f0;
+}
+
+/* 自定义滚动条样式（Webkit浏览器） */
+.image-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.image-grid::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.image-grid::-webkit-scrollbar-thumb {
+  background: #0066cc;
+  border-radius: 3px;
+}
+
+.image-grid::-webkit-scrollbar-thumb:hover {
+  background: #0055aa;
 }
 
 .image-item {
@@ -348,13 +372,15 @@ onUnmounted(() => {
   overflow: hidden;
   border-radius: 8px;
   background-color: #f5f5f5;
-  aspect-ratio: 16/9;
+  flex: 0 0 auto;
+  width: 500px; /* 设置一个固定的基础宽度 */
+  height: 400px; /* 增加高度 */
 }
 
 .image-item img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* 改为 cover 以填充整个容器 */
   transition: transform 0.3s ease;
 }
 
@@ -378,6 +404,7 @@ onUnmounted(() => {
   opacity: 1;
 }
 
+/* 响应式调整 */
 @media (max-width: 1200px) {
   .feature-grid {
     padding: 0 20px;
@@ -385,6 +412,11 @@ onUnmounted(() => {
   
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .image-item {
+    width: 450px;
+    height: 350px;
   }
 }
 
@@ -396,6 +428,11 @@ onUnmounted(() => {
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .image-item {
+    width: 400px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -405,6 +442,11 @@ onUnmounted(() => {
   
   .feature-card h3 {
     font-size: 1.5rem;
+  }
+
+  .image-item {
+    width: 300px;
+    height: 250px;
   }
 }
 
