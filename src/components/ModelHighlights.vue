@@ -185,39 +185,33 @@ const features = [
     description: '提供专业级别的影像和动漫创作能力',
     subFeatures: [
       {
-        title: '影像场景',
-        description: '更准确的电影类型片、镜头语言响应',
-        subFeatures: [
-          {
-            title: '电影类型',
-            description: '准确理解不同类型电影的视觉风格与氛围',
-            images: [
-              { filename: 'pro/film/type-1.jpg', alt: 'CG概念', description: '科幻场景的视觉表现' },
-              { filename: 'pro/film/type-2.jpg', alt: '电影剧照', description: '戏剧性场景呈现' },
-              { filename: 'pro/film/type-3.jpg', alt: '恐怖片', description: '恐怖氛围营造' },
-              { filename: 'pro/film/type-4.jpg', alt: '纪录片', description: '真实纪实风格' },
-              { filename: 'pro/film/type-5.jpg', alt: '爱情片', description: '浪漫情感表达' },
-              { filename: 'pro/film/type-6.jpg', alt: '公路片', description: '旅途探索主题' }
-            ]
-          },
-          {
-            title: '镜头语言',
-            description: '精准控制镜头视角、景别、焦段等专业摄影参数',
-            images: [
-              { filename: 'pro/film/lens-1.jpeg', alt: '大特写', description: '突出细节表情' },
-              { filename: 'pro/film/lens-2.jpeg', alt: '特写', description: '刻画人物情绪' },
-              { filename: 'pro/film/lens-3.jpeg', alt: '近景', description: '强调主体特征' },
-              { filename: 'pro/film/lens-4.jpeg', alt: '中景', description: '展现人物动作' },
-              { filename: 'pro/film/lens-5.jpeg', alt: '全景', description: '完整场景呈现' },
-              { filename: 'pro/film/lens-6.jpeg', alt: '大远景', description: '宏大场面展示' },
-              { filename: 'pro/film/lens-7.jpeg', alt: '背面', description: '背影氛围营造' },
-              { filename: 'pro/film/lens-8.jpeg', alt: '浅景深', description: '主体虚实对比' },
-              { filename: 'pro/film/lens-9.jpeg', alt: '动态模糊', description: '运动感表现' },
-              { filename: 'pro/film/lens-10.jpeg', alt: '柔焦镜头', description: '柔美效果渲染' },
-              { filename: 'pro/film/lens-11.jpeg', alt: '猫眼镜头', description: '变形视觉效果' },
-              { filename: 'pro/film/lens-12.jpeg', alt: '鱼眼镜头', description: '超广角视角' }
-            ]
-          }
+        title: '电影类型',
+        description: '准确理解不同类型电影的视觉风格与氛围',
+        images: [
+          { filename: 'pro/film/type-1.jpg', alt: 'CG概念', description: '科幻场景的视觉表现' },
+          { filename: 'pro/film/type-2.jpg', alt: '电影剧照', description: '戏剧性场景呈现' },
+          { filename: 'pro/film/type-3.jpg', alt: '恐怖片', description: '恐怖氛围营造' },
+          { filename: 'pro/film/type-4.jpg', alt: '纪录片', description: '真实纪实风格' },
+          { filename: 'pro/film/type-5.jpg', alt: '爱情片', description: '浪漫情感表达' },
+          { filename: 'pro/film/type-6.jpg', alt: '公路片', description: '旅途探索主题' }
+        ]
+      },
+      {
+        title: '镜头语言',
+        description: '精准控制镜头视角、景别、焦段等专业摄影参数',
+        images: [
+          { filename: 'pro/film/lens-1.jpeg', alt: '大特写', description: '突出细节表情' },
+          { filename: 'pro/film/lens-2.jpeg', alt: '特写', description: '刻画人物情绪' },
+          { filename: 'pro/film/lens-3.jpeg', alt: '近景', description: '强调主体特征' },
+          { filename: 'pro/film/lens-4.jpeg', alt: '中景', description: '展现人物动作' },
+          { filename: 'pro/film/lens-5.jpeg', alt: '全景', description: '完整场景呈现' },
+          { filename: 'pro/film/lens-6.jpeg', alt: '大远景', description: '宏大场面展示' },
+          { filename: 'pro/film/lens-7.jpeg', alt: '背面', description: '背影氛围营造' },
+          { filename: 'pro/film/lens-8.jpeg', alt: '浅景深', description: '主体虚实对比' },
+          { filename: 'pro/film/lens-9.jpeg', alt: '动态模糊', description: '运动感表现' },
+          { filename: 'pro/film/lens-10.jpeg', alt: '柔焦镜头', description: '柔美效果渲染' },
+          { filename: 'pro/film/lens-11.jpeg', alt: '猫眼镜头', description: '变形视觉效果' },
+          { filename: 'pro/film/lens-12.jpeg', alt: '鱼眼镜头', description: '超广角视角' }
         ]
       },
       {
@@ -247,7 +241,7 @@ const features = [
           { 
             filename: 'pro/anime-5.jpg', 
             alt: '插画风格', 
-            description: '现代插画风格作品'  
+            description: '现代插画风格作品' 
           }
         ]
       }
