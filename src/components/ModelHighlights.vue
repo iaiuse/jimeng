@@ -110,17 +110,17 @@ const features = [
         description: '去磨皮感、假脸感、ai油腻感',
         images: [
           { 
-            filename: 'realism/texture-1.png', 
+            filename: 'realism/texture-1.webp', 
             alt: '皮肤质感', 
             description: '精准还原真实皮肤纹理和质地' 
           },
           { 
-            filename: 'realism/texture-2.png', 
+            filename: 'realism/texture-2.webp', 
             alt: '材质细节', 
             description: '准确表现不同材质的细节特征' 
           },
           { 
-            filename: 'realism/texture-3.png', 
+            filename: 'realism/texture-3.webp', 
             alt: '光影质感', 
             description: '自然的光影过渡和材质反射' 
           }
@@ -131,17 +131,17 @@ const features = [
         description: '去僵硬感、摆拍感、ai眼神空洞感，情绪细腻有感染力',
         images: [
           { 
-            filename: 'realism/emotion-1.png', 
+            filename: 'realism/emotion-1.webp', 
             alt: '自然表情', 
             description: '真实自然的面部表情和情绪' 
           },
           { 
-            filename: 'realism/emotion-2.png', 
+            filename: 'realism/emotion-2.webp', 
             alt: '眼神传神', 
             description: '富有生命力的眼神表现' 
           },
           { 
-            filename: 'realism/emotion-3.png', 
+            filename: 'realism/emotion-3.webp', 
             alt: '情绪张力', 
             description: '细腻的情感状态表达' 
           }
@@ -160,17 +160,17 @@ const features = [
         description: '支持更高分辨率输出，保持结构稳定',
         images: [
           { 
-            filename: 'hd/scene-1.png', 
+            filename: 'hd/scene-1.webp', 
             alt: '1K分辨率', 
             description: '基础分辨率输出，细节清晰' 
           },
           { 
-            filename: 'hd/scene-2.png', 
+            filename: 'hd/scene-2.webp', 
             alt: '1.5K分辨率', 
             description: '更高分辨率，细节更丰富' 
           },
           { 
-            filename: 'hd/scene-3.png', 
+            filename: 'hd/scene-3.webp', 
             alt: '2K分辨率', 
             description: '超高清输出，结构准确度提升' 
           }
@@ -188,30 +188,30 @@ const features = [
         title: '电影类型',
         description: '准确理解不同类型电影的视觉风格与氛围',
         images: [
-          { filename: 'pro/film/type/type-1.png', alt: 'CG概念', description: '科幻场景的视觉表现' },
-          { filename: 'pro/film/type/type-2.png', alt: '电影剧照', description: '戏剧性场景呈现' },
-          { filename: 'pro/film/type/type-3.png', alt: '恐怖片', description: '恐怖氛围营造' },
-          { filename: 'pro/film/type/type-4.png', alt: '纪录片', description: '真实纪实风格' },
-          { filename: 'pro/film/type/type-5.jpeg', alt: '爱情片', description: '浪漫情感表达' },
-          { filename: 'pro/film/type/type-6.jpeg', alt: '公路片', description: '旅途探索主题' }
+          { filename: 'pro/film/type/type-1.webp', alt: 'CG概念', description: '科幻场景的视觉表现' },
+          { filename: 'pro/film/type/type-2.webp', alt: '电影剧照', description: '戏剧性场景呈现' },
+          { filename: 'pro/film/type/type-3.webp', alt: '恐怖片', description: '恐怖氛围营造' },
+          { filename: 'pro/film/type/type-4.webp', alt: '纪录片', description: '真实纪实风格' },
+          { filename: 'pro/film/type/type-5.webp', alt: '爱情片', description: '浪漫情感表达' },
+          { filename: 'pro/film/type/type-6.webp', alt: '公路片', description: '旅途探索主题' }
         ]
       },
       {
         title: '镜头语言',
         description: '精准控制镜头视角、景别、焦段等专业摄影参数',
         images: [
-          { filename: 'pro/film/lens/lens-1.jpeg', alt: '大特写', description: '突出细节表情' },
-          { filename: 'pro/film/lens/lens-2.jpeg', alt: '特写', description: '刻画人物情绪' },
-          { filename: 'pro/film/lens/lens-3.jpeg', alt: '近景', description: '强调主体特征' },
-          { filename: 'pro/film/lens/lens-4.jpeg', alt: '中景', description: '展现人物动作' },
-          { filename: 'pro/film/lens/lens-5.jpeg', alt: '全景', description: '完整场景呈现' },
-          { filename: 'pro/film/lens/lens-6.jpeg', alt: '大远景', description: '宏大场面展示' },
-          { filename: 'pro/film/lens/lens-7.jpeg', alt: '背面', description: '背影氛围营造' },
-          { filename: 'pro/film/lens/lens-8.jpeg', alt: '浅景深', description: '主体虚实对比' },
-          { filename: 'pro/film/lens/lens-9.jpeg', alt: '动态模糊', description: '运动感表现' },
-          { filename: 'pro/film/lens/lens-10.jpeg', alt: '柔焦镜头', description: '柔美效果渲染' },
-          { filename: 'pro/film/lens/lens-11.jpeg', alt: '猫眼镜头', description: '变形视觉效果' },
-          { filename: 'pro/film/lens/lens-12.jpeg', alt: '鱼眼镜头', description: '超广角视角' }
+          { filename: 'pro/film/lens/lens-1.webp', alt: '大特写', description: '突出细节表情' },
+          { filename: 'pro/film/lens/lens-2.webp', alt: '特写', description: '刻画人物情绪' },
+          { filename: 'pro/film/lens/lens-3.webp', alt: '近景', description: '强调主体特征' },
+          { filename: 'pro/film/lens/lens-4.webp', alt: '中景', description: '展现人物动作' },
+          { filename: 'pro/film/lens/lens-5.webp', alt: '全景', description: '完整场景呈现' },
+          { filename: 'pro/film/lens/lens-6.webp', alt: '大远景', description: '宏大场面展示' },
+          { filename: 'pro/film/lens/lens-7.webp', alt: '背面', description: '背影氛围营造' },
+          { filename: 'pro/film/lens/lens-8.webp', alt: '浅景深', description: '主体虚实对比' },
+          { filename: 'pro/film/lens/lens-9.webp', alt: '动态模糊', description: '运动感表现' },
+          { filename: 'pro/film/lens/lens-10.webp', alt: '柔焦镜头', description: '柔美效果渲染' },
+          { filename: 'pro/film/lens/lens-11.webp', alt: '猫眼镜头', description: '变形视觉效果' },
+          { filename: 'pro/film/lens/lens-12.webp', alt: '鱼眼镜头', description: '超广角视角' }
         ]
       },
       {
@@ -219,27 +219,27 @@ const features = [
         description: '风格更多元、细节更丰富、色调更统一，不再有2.1的"抠图感"',
         images: [
           { 
-            filename: 'pro/anime-1.png', 
+            filename: 'pro/anime-1.webp', 
             alt: '写实动漫', 
             description: '精致的写实风格动漫角色' 
           },
           { 
-            filename: 'pro/anime-2.png', 
+            filename: 'pro/anime-2.webp', 
             alt: '二次元风格', 
             description: '典型二次元美术风格' 
           },
           { 
-            filename: 'pro/anime-3.png', 
+            filename: 'pro/anime-3.webp', 
             alt: '赛璐璐风格', 
             description: '传统赛璐璐动画风格' 
           },
           { 
-            filename: 'pro/anime-4.png', 
+            filename: 'pro/anime-4.webp', 
             alt: '水彩风格', 
             description: '柔和的水彩画风动漫' 
           },
           { 
-            filename: 'pro/anime-5.png', 
+            filename: 'pro/anime-5.webp', 
             alt: '插画风格', 
             description: '现代插画风格作品' 
           }
@@ -258,22 +258,22 @@ const features = [
         description: '精准控制文字的粗细程度，从细体到特粗体都能准确响应',
         images: [
           { 
-            filename: 'typography/weight/thin.png', 
+            filename: 'typography/weight/thin.webp', 
             alt: '细体', 
             description: '轻盈纤细的字体效果' 
           },
           { 
-            filename: 'typography/weight/regular.png', 
+            filename: 'typography/weight/regular.webp', 
             alt: '适中', 
             description: '标准字重，清晰易读' 
           },
           { 
-            filename: 'typography/weight/bold.png', 
+            filename: 'typography/weight/bold.webp', 
             alt: '粗体', 
             description: '加粗效果，突出重点' 
           },
           { 
-            filename: 'typography/weight/extra-bold.png', 
+            filename: 'typography/weight/extra-bold.webp', 
             alt: '特粗体', 
             description: '超粗字重，强调视觉冲击' 
           }
@@ -284,42 +284,42 @@ const features = [
         description: '支持多种字体风格，从传统到现代都能精准还原',
         images: [
           { 
-            filename: 'typography/style/serif.png', 
+            filename: 'typography/style/serif.webp', 
             alt: '弯曲字体', 
             description: '优雅的衬线字体效果' 
           },
           { 
-            filename: 'typography/style/modern.png', 
+            filename: 'typography/style/modern.webp', 
             alt: '时尚字体', 
             description: '现代简约风格字体' 
           },
           { 
-            filename: 'typography/style/cute.png', 
+            filename: 'typography/style/cute.webp', 
             alt: '可爱字体', 
             description: '活泼可爱的字体风格' 
           },
           { 
-            filename: 'typography/style/calligraphy.png', 
+            filename: 'typography/style/calligraphy.webp', 
             alt: '连笔字', 
             description: '流畅的书法风格字体' 
           },
           { 
-            filename: 'typography/style/graffiti.png', 
+            filename: 'typography/style/graffiti.webp', 
             alt: '涂鸦字', 
             description: '街头艺术风格字体' 
           },
           { 
-            filename: 'typography/style/pixel.png', 
+            filename: 'typography/style/pixel.webp', 
             alt: '像素字', 
             description: '复古游戏风格字体' 
           },
           { 
-            filename: 'typography/style/english.png', 
+            filename: 'typography/style/english.webp', 
             alt: '英文字体', 
             description: '多样化的英文字体支持' 
           },
           { 
-            filename: 'typography/style/mixed.png', 
+            filename: 'typography/style/mixed.webp', 
             alt: '混合字体', 
             description: '中英文混排效果' 
           }
@@ -330,17 +330,17 @@ const features = [
         description: '还原真实手写效果，搭配手绘插画形成独特艺术风格',
         images: [
           { 
-            filename: 'typography/handwriting/casual.png', 
+            filename: 'typography/handwriting/casual.webp', 
             alt: '随性手写', 
             description: '自然随性的手写风格' 
           },
           { 
-            filename: 'typography/handwriting/neat.png', 
+            filename: 'typography/handwriting/neat.webp', 
             alt: '工整手写', 
             description: '规整清晰的手写效果' 
           },
           { 
-            filename: 'typography/handwriting/sketch.png', 
+            filename: 'typography/handwriting/sketch.webp', 
             alt: '速写手绘', 
             description: '速写风格的字体与插画' 
           }
@@ -351,17 +351,17 @@ const features = [
         description: '结合矢量插画，打造现代感设计排版',
         images: [
           { 
-            filename: 'typography/creative/poster.png', 
+            filename: 'typography/creative/poster.webp', 
             alt: '海报设计', 
             description: '创意海报排版设计' 
           },
           { 
-            filename: 'typography/creative/logo.png', 
+            filename: 'typography/creative/logo.webp', 
             alt: 'Logo设计', 
             description: '品牌标志创意设计' 
           },
           { 
-            filename: 'typography/creative/banner.png', 
+            filename: 'typography/creative/banner.webp', 
             alt: '横幅设计', 
             description: '创意横幅广告设计' 
           }
@@ -372,17 +372,17 @@ const features = [
         description: '专业的商业设计排版，适合品牌营销使用',
         images: [
           { 
-            filename: 'typography/commercial/brand.png', 
+            filename: 'typography/commercial/brand.webp', 
             alt: '品牌设计', 
             description: '专业品牌视觉设计' 
           },
           { 
-            filename: 'typography/commercial/ad.png', 
+            filename: 'typography/commercial/ad.webp', 
             alt: '广告设计', 
             description: '商业广告创意设计' 
           },
           { 
-            filename: 'typography/commercial/packaging.png', 
+            filename: 'typography/commercial/packaging.webp', 
             alt: '包装设计', 
             description: '产品包装创意设计' 
           }
