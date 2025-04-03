@@ -20,25 +20,24 @@
           </div>
           <div class="social-links">
             <a href="#" class="social-link">
-              <img src="/icons/wechat.svg" alt="公众号" class="social-icon">
+              <img src="/icons/wechat.svg" alt="关注我们" class="social-icon">
               <div class="social-tooltip">
-                <div class="social-tooltip-title">关注我们</div>
+                <div class="social-tooltip-title">扫码关注我们</div>
+                <div class="social-tooltip-qrcode">
+                  <img src="/images/waytoagi.png" alt="微信公众号二维码">
+                </div>
                 <div class="social-tooltip-links">
-                  <a href="https://github.com/your-username" target="_blank" class="social-tooltip-link">
+                  <a href="https://github.com/iaiuse" target="_blank" class="social-tooltip-link">
                     <img src="/icons/github.svg" alt="GitHub">
                     GitHub
                   </a>
                   <a href="https://mp.weixin.qq.com" target="_blank" class="social-tooltip-link">
                     <img src="/icons/wechat.svg" alt="公众号">
-                    公众号
+                    AI决策者洞察
                   </a>
-                  <a href="https://xiaohongshu.com" target="_blank" class="social-tooltip-link">
-                    <img src="/icons/xiaohongshu.svg" alt="小红书">
-                    小红书
-                  </a>
-                  <a href="https://jike.xyz" target="_blank" class="social-tooltip-link">
+                  <a href="https://web.okjike.com/u/_大雨_" target="_blank" class="social-tooltip-link">
                     <img src="/icons/jike.svg" alt="即刻">
-                    即刻
+                    _大雨_
                   </a>
                 </div>
               </div>
@@ -234,10 +233,10 @@ header {
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   background: white;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  width: 280px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -252,22 +251,37 @@ header {
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid white;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
 }
 
 .social-tooltip-title {
   font-weight: 500;
   color: #333;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.social-tooltip-qrcode {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.social-tooltip-qrcode img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .social-tooltip-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .social-tooltip-link {
@@ -276,9 +290,9 @@ header {
   gap: 8px;
   color: #666;
   text-decoration: none;
-  font-size: 0.85rem;
-  padding: 4px 8px;
-  border-radius: 4px;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 6px;
   transition: all 0.2s ease;
 }
 
@@ -288,8 +302,8 @@ header {
 }
 
 .social-tooltip-link img {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .main-nav {
