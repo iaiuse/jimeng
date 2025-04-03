@@ -219,27 +219,27 @@ const features = [
         description: '风格更多元、细节更丰富、色调更统一，不再有2.1的"抠图感"',
         images: [
           { 
-            filename: 'pro/anime-1.jpg', 
+            filename: 'pro/anime-1.png', 
             alt: '写实动漫', 
             description: '精致的写实风格动漫角色' 
           },
           { 
-            filename: 'pro/anime-2.jpg', 
+            filename: 'pro/anime-2.png', 
             alt: '二次元风格', 
             description: '典型二次元美术风格' 
           },
           { 
-            filename: 'pro/anime-3.jpg', 
+            filename: 'pro/anime-3.png', 
             alt: '赛璐璐风格', 
             description: '传统赛璐璐动画风格' 
           },
           { 
-            filename: 'pro/anime-4.jpg', 
+            filename: 'pro/anime-4.png', 
             alt: '水彩风格', 
             description: '柔和的水彩画风动漫' 
           },
           { 
-            filename: 'pro/anime-5.jpg', 
+            filename: 'pro/anime-5.png', 
             alt: '插画风格', 
             description: '现代插画风格作品' 
           }
@@ -254,37 +254,138 @@ const features = [
     description: '支持多样化的字体和专业级排版效果',
     subFeatures: [
       {
-        title: '字体响应能力',
-        description: '大字小字都能响应、支持不同字体',
+        title: '字重控制',
+        description: '精准控制文字的粗细程度，从细体到特粗体都能准确响应',
         images: [
-          // 字重
-          { filename: 'typography/weight-1.jpg', alt: '字重示例1' },
-          { filename: 'typography/weight-2.jpg', alt: '字重示例2' },
-          { filename: 'typography/weight-3.jpg', alt: '字重示例3' },
-          { filename: 'typography/weight-4.jpg', alt: '字重示例4' },
-          // 字体
-          { filename: 'typography/font-1.jpg', alt: '字体示例1' },
-          { filename: 'typography/font-2.jpg', alt: '字体示例2' },
-          { filename: 'typography/font-3.jpg', alt: '字体示例3' },
-          { filename: 'typography/font-4.jpg', alt: '字体示例4' }
+          { 
+            filename: 'typography/weight/thin.png', 
+            alt: '细体', 
+            description: '轻盈纤细的字体效果' 
+          },
+          { 
+            filename: 'typography/weight/regular.png', 
+            alt: '适中', 
+            description: '标准字重，清晰易读' 
+          },
+          { 
+            filename: 'typography/weight/bold.png', 
+            alt: '粗体', 
+            description: '加粗效果，突出重点' 
+          },
+          { 
+            filename: 'typography/weight/extra-bold.png', 
+            alt: '特粗体', 
+            description: '超粗字重，强调视觉冲击' 
+          }
         ]
       },
       {
-        title: '专业排版',
-        description: '多样字体搭配设计排版和高美感底图，有效帮助创作者降低后期成本，提升直出效率',
+        title: '字体风格',
+        description: '支持多种字体风格，从传统到现代都能精准还原',
         images: [
-          // 手写字体+手绘插画
-          { filename: 'typography/handwriting-1.jpg', alt: '手写字体示例1' },
-          { filename: 'typography/handwriting-2.jpg', alt: '手写字体示例2' },
-          { filename: 'typography/handwriting-3.jpg', alt: '手写字体示例3' },
-          // 创意字体+矢量插画
-          { filename: 'typography/creative-1.jpg', alt: '创意字体示例1' },
-          { filename: 'typography/creative-2.jpg', alt: '创意字体示例2' },
-          { filename: 'typography/creative-3.jpg', alt: '创意字体示例3' },
-          // 常规字体+写实摄影
-          { filename: 'typography/regular-1.jpg', alt: '常规字体示例1' },
-          { filename: 'typography/regular-2.jpg', alt: '常规字体示例2' },
-          { filename: 'typography/regular-3.jpg', alt: '常规字体示例3' }
+          { 
+            filename: 'typography/style/serif.png', 
+            alt: '弯曲字体', 
+            description: '优雅的衬线字体效果' 
+          },
+          { 
+            filename: 'typography/style/modern.png', 
+            alt: '时尚字体', 
+            description: '现代简约风格字体' 
+          },
+          { 
+            filename: 'typography/style/cute.png', 
+            alt: '可爱字体', 
+            description: '活泼可爱的字体风格' 
+          },
+          { 
+            filename: 'typography/style/calligraphy.png', 
+            alt: '连笔字', 
+            description: '流畅的书法风格字体' 
+          },
+          { 
+            filename: 'typography/style/graffiti.png', 
+            alt: '涂鸦字', 
+            description: '街头艺术风格字体' 
+          },
+          { 
+            filename: 'typography/style/pixel.png', 
+            alt: '像素字', 
+            description: '复古游戏风格字体' 
+          },
+          { 
+            filename: 'typography/style/english.png', 
+            alt: '英文字体', 
+            description: '多样化的英文字体支持' 
+          },
+          { 
+            filename: 'typography/style/mixed.png', 
+            alt: '混合字体', 
+            description: '中英文混排效果' 
+          }
+        ]
+      },
+      {
+        title: '手写风格',
+        description: '还原真实手写效果，搭配手绘插画形成独特艺术风格',
+        images: [
+          { 
+            filename: 'typography/handwriting/casual.png', 
+            alt: '随性手写', 
+            description: '自然随性的手写风格' 
+          },
+          { 
+            filename: 'typography/handwriting/neat.png', 
+            alt: '工整手写', 
+            description: '规整清晰的手写效果' 
+          },
+          { 
+            filename: 'typography/handwriting/sketch.png', 
+            alt: '速写手绘', 
+            description: '速写风格的字体与插画' 
+          }
+        ]
+      },
+      {
+        title: '创意排版',
+        description: '结合矢量插画，打造现代感设计排版',
+        images: [
+          { 
+            filename: 'typography/creative/poster.png', 
+            alt: '海报设计', 
+            description: '创意海报排版设计' 
+          },
+          { 
+            filename: 'typography/creative/logo.png', 
+            alt: 'Logo设计', 
+            description: '品牌标志创意设计' 
+          },
+          { 
+            filename: 'typography/creative/banner.png', 
+            alt: '横幅设计', 
+            description: '创意横幅广告设计' 
+          }
+        ]
+      },
+      {
+        title: '商业排版',
+        description: '专业的商业设计排版，适合品牌营销使用',
+        images: [
+          { 
+            filename: 'typography/commercial/brand.png', 
+            alt: '品牌设计', 
+            description: '专业品牌视觉设计' 
+          },
+          { 
+            filename: 'typography/commercial/ad.png', 
+            alt: '广告设计', 
+            description: '商业广告创意设计' 
+          },
+          { 
+            filename: 'typography/commercial/packaging.png', 
+            alt: '包装设计', 
+            description: '产品包装创意设计' 
+          }
         ]
       }
     ]
