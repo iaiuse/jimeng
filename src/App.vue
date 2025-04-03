@@ -64,7 +64,7 @@
         <div class="footer-content">
           <div class="footer-info">
             <div class="footer-logo">
-              <img src="https://placehold.co/120x40" alt="ByteDance Logo">
+              <img src="/images/waytoagi.png" alt="WaytoAGI Logo">
             </div>
             <p>即梦图片3.0模型是由ByteDance开发的新一代AI图像生成技术，提供真实、高清、专业的图像创作体验。</p>
           </div>
