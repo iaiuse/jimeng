@@ -40,10 +40,20 @@
                  :key="imageIdx" 
                  class="image-item"
                  @click="openPreview(subFeature.images, imageIdx)">
-              <img :src="getImageUrl(image.filename)" 
-                   :alt="image.alt" 
-                   loading="lazy"
-                   :title="'点击查看大图'">
+              <div class="category-label">{{ image.alt }}</div>
+              <div class="image-wrapper">
+                <img :src="getImageUrl(image.filename)" 
+                     :alt="image.alt" 
+                     loading="lazy">
+                <div class="image-overlay">
+                  <div class="image-title">{{ image.alt }}</div>
+                  <div class="image-description">{{ image.description }}</div>
+                </div>
+              </div>
+              <div class="image-caption">
+                <div class="image-title">{{ image.alt }}</div>
+                <div class="image-description">{{ image.description }}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -99,18 +109,42 @@ const features = [
         title: '质感真实',
         description: '去磨皮感、假脸感、ai油腻感',
         images: [
-          { filename: 'realism/texture-1.png', alt: '质感真实示例1' },
-          { filename: 'realism/texture-2.png', alt: '质感真实示例2' },
-          { filename: 'realism/texture-3.png', alt: '质感真实示例3' }
+          { 
+            filename: 'realism/texture-1.png', 
+            alt: '皮肤质感', 
+            description: '精准还原真实皮肤纹理和质地' 
+          },
+          { 
+            filename: 'realism/texture-2.png', 
+            alt: '材质细节', 
+            description: '准确表现不同材质的细节特征' 
+          },
+          { 
+            filename: 'realism/texture-3.png', 
+            alt: '光影质感', 
+            description: '自然的光影过渡和材质反射' 
+          }
         ]
       },
       {
         title: '情绪真实',
         description: '去僵硬感、摆拍感、ai眼神空洞感，情绪细腻有感染力',
         images: [
-          { filename: 'realism/emotion-1.png', alt: '情绪真实示例1' },
-          { filename: 'realism/emotion-2.png', alt: '情绪真实示例2' },
-          { filename: 'realism/emotion-3.png', alt: '情绪真实示例3' }
+          { 
+            filename: 'realism/emotion-1.png', 
+            alt: '自然表情', 
+            description: '真实自然的面部表情和情绪' 
+          },
+          { 
+            filename: 'realism/emotion-2.png', 
+            alt: '眼神传神', 
+            description: '富有生命力的眼神表现' 
+          },
+          { 
+            filename: 'realism/emotion-3.png', 
+            alt: '情绪张力', 
+            description: '细腻的情感状态表达' 
+          }
         ]
       }
     ]
@@ -125,9 +159,21 @@ const features = [
         title: '分辨率提升',
         description: '支持更高分辨率输出，保持结构稳定',
         images: [
-          { filename: 'hd/scene-1.png', alt: '1K' },
-          { filename: 'hd/scene-2.png', alt: '1.5K' },
-          { filename: 'hd/scene-3.png', alt: '2K' }
+          { 
+            filename: 'hd/scene-1.png', 
+            alt: '1K分辨率', 
+            description: '基础分辨率输出，细节清晰' 
+          },
+          { 
+            filename: 'hd/scene-2.png', 
+            alt: '1.5K分辨率', 
+            description: '更高分辨率，细节更丰富' 
+          },
+          { 
+            filename: 'hd/scene-3.png', 
+            alt: '2K分辨率', 
+            description: '超高清输出，结构准确度提升' 
+          }
         ]
       }
     ]
@@ -141,33 +187,68 @@ const features = [
       {
         title: '影像场景',
         description: '更准确的电影类型片、镜头语言响应',
-        images: [
-          // 电影类型片
-          { filename: 'pro/film-type-1.jpg', alt: '电影类型1' },
-          { filename: 'pro/film-type-2.jpg', alt: '电影类型2' },
-          { filename: 'pro/film-type-3.jpg', alt: '电影类型3' },
-          { filename: 'pro/film-type-4.jpg', alt: '电影类型4' },
-          { filename: 'pro/film-type-5.jpg', alt: '电影类型5' },
-          { filename: 'pro/film-type-6.jpg', alt: '电影类型6' },
-          // 镜头语言
-          { filename: 'pro/lens-1.jpg', alt: '镜头语言1' },
-          { filename: 'pro/lens-2.jpg', alt: '镜头语言2' },
-          { filename: 'pro/lens-3.jpg', alt: '镜头语言3' },
-          { filename: 'pro/lens-4.jpg', alt: '镜头语言4' },
-          { filename: 'pro/lens-5.jpg', alt: '镜头语言5' },
-          { filename: 'pro/lens-6.jpg', alt: '镜头语言6' },
-          { filename: 'pro/lens-7.jpg', alt: '镜头语言7' }
+        subFeatures: [
+          {
+            title: '电影类型',
+            description: '准确理解不同类型电影的视觉风格与氛围',
+            images: [
+              { filename: 'pro/film/type-1.jpg', alt: 'CG概念', description: '科幻场景的视觉表现' },
+              { filename: 'pro/film/type-2.jpg', alt: '电影剧照', description: '戏剧性场景呈现' },
+              { filename: 'pro/film/type-3.jpg', alt: '恐怖片', description: '恐怖氛围营造' },
+              { filename: 'pro/film/type-4.jpg', alt: '纪录片', description: '真实纪实风格' },
+              { filename: 'pro/film/type-5.jpg', alt: '爱情片', description: '浪漫情感表达' },
+              { filename: 'pro/film/type-6.jpg', alt: '公路片', description: '旅途探索主题' }
+            ]
+          },
+          {
+            title: '镜头语言',
+            description: '精准控制镜头视角、景别、焦段等专业摄影参数',
+            images: [
+              { filename: 'pro/film/lens-1.jpeg', alt: '大特写', description: '突出细节表情' },
+              { filename: 'pro/film/lens-2.jpeg', alt: '特写', description: '刻画人物情绪' },
+              { filename: 'pro/film/lens-3.jpeg', alt: '近景', description: '强调主体特征' },
+              { filename: 'pro/film/lens-4.jpeg', alt: '中景', description: '展现人物动作' },
+              { filename: 'pro/film/lens-5.jpeg', alt: '全景', description: '完整场景呈现' },
+              { filename: 'pro/film/lens-6.jpeg', alt: '大远景', description: '宏大场面展示' },
+              { filename: 'pro/film/lens-7.jpeg', alt: '背面', description: '背影氛围营造' },
+              { filename: 'pro/film/lens-8.jpeg', alt: '浅景深', description: '主体虚实对比' },
+              { filename: 'pro/film/lens-9.jpeg', alt: '动态模糊', description: '运动感表现' },
+              { filename: 'pro/film/lens-10.jpeg', alt: '柔焦镜头', description: '柔美效果渲染' },
+              { filename: 'pro/film/lens-11.jpeg', alt: '猫眼镜头', description: '变形视觉效果' },
+              { filename: 'pro/film/lens-12.jpeg', alt: '鱼眼镜头', description: '超广角视角' }
+            ]
+          }
         ]
       },
       {
         title: '动漫场景',
         description: '风格更多元、细节更丰富、色调更统一，不再有2.1的"抠图感"',
         images: [
-          { filename: 'pro/anime-1.jpg', alt: '动漫场景1' },
-          { filename: 'pro/anime-2.jpg', alt: '动漫场景2' },
-          { filename: 'pro/anime-3.jpg', alt: '动漫场景3' },
-          { filename: 'pro/anime-4.jpg', alt: '动漫场景4' },
-          { filename: 'pro/anime-5.jpg', alt: '动漫场景5' }
+          { 
+            filename: 'pro/anime-1.jpg', 
+            alt: '写实动漫', 
+            description: '精致的写实风格动漫角色' 
+          },
+          { 
+            filename: 'pro/anime-2.jpg', 
+            alt: '二次元风格', 
+            description: '典型二次元美术风格' 
+          },
+          { 
+            filename: 'pro/anime-3.jpg', 
+            alt: '赛璐璐风格', 
+            description: '传统赛璐璐动画风格' 
+          },
+          { 
+            filename: 'pro/anime-4.jpg', 
+            alt: '水彩风格', 
+            description: '柔和的水彩画风动漫' 
+          },
+          { 
+            filename: 'pro/anime-5.jpg', 
+            alt: '插画风格', 
+            description: '现代插画风格作品' 
+          }
         ]
       }
     ]
@@ -335,75 +416,98 @@ onUnmounted(() => {
   margin-bottom: 15px;
 }
 
+.sub-feature p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 .image-grid {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   margin-top: 20px;
-  overflow-x: auto;
-  padding-bottom: 15px;
-  scrollbar-width: thin;
-  scrollbar-color: #0066cc #f0f0f0;
-  height: 500px;
-}
-
-/* 自定义滚动条样式（Webkit浏览器） */
-.image-grid::-webkit-scrollbar {
-  height: 6px;
-}
-
-.image-grid::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  border-radius: 3px;
-}
-
-.image-grid::-webkit-scrollbar-thumb {
-  background: #0066cc;
-  border-radius: 3px;
-}
-
-.image-grid::-webkit-scrollbar-thumb:hover {
-  background: #0055aa;
 }
 
 .image-item {
   position: relative;
   cursor: pointer;
+  overflow: visible;
+  border-radius: 8px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
+  aspect-ratio: 16/9;
   background-color: #f5f5f5;
-  flex: 0 0 auto;
-  height: 100%;
-  aspect-ratio: auto;
-  min-width: 300px;
-  max-width: 800px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .image-item img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.image-item:hover img {
-  transform: scale(1.02);
+.image-item:hover {
+  transform: translateY(-2px);
 }
 
-.image-item::after {
-  content: '';
+.image-item:hover img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 20px;
+  color: white;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.image-item:hover::after {
+.image-item:hover .image-overlay {
   opacity: 1;
+}
+
+.image-caption {
+  padding: 12px 0;
+  text-align: center;
+}
+
+.image-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.image-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 分类标签样式 */
+.category-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 1;
 }
 
 /* 响应式调整 */
@@ -413,7 +517,8 @@ onUnmounted(() => {
   }
   
   .image-grid {
-    height: 400px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
   }
 }
 
@@ -421,23 +526,32 @@ onUnmounted(() => {
   .feature-card {
     padding: 25px;
   }
-
+  
   .image-grid {
-    height: 300px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .image-caption {
+    padding: 8px 0;
+  }
+
+  .image-title {
+    font-size: 0.95rem;
+  }
+
+  .image-description {
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .image-grid {
-    height: 250px;
+    grid-template-columns: 1fr;
   }
   
   .feature-card h3 {
     font-size: 1.5rem;
-  }
-
-  .image-item {
-    min-width: 200px;
   }
 }
 

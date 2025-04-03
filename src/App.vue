@@ -6,16 +6,44 @@
           <img src="https://placehold.co/120x30" alt="ByteDance Logo">
           即梦图片3.0
         </a>
-        <div class="main-nav">
-          <button 
-            v-for="tab in tabs" 
-            :key="tab.id"
-            class="nav-button"
-            :class="{ active: currentTab === tab.id }"
-            @click="currentTab = tab.id"
-          >
-            {{ tab.name }}
-          </button>
+        <div class="header-right">
+          <div class="main-nav">
+            <button 
+              v-for="tab in tabs" 
+              :key="tab.id"
+              class="nav-button"
+              :class="{ active: currentTab === tab.id }"
+              @click="currentTab = tab.id"
+            >
+              {{ tab.name }}
+            </button>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <img src="/icons/wechat.svg" alt="公众号" class="social-icon">
+              <div class="social-tooltip">
+                <div class="social-tooltip-title">关注我们</div>
+                <div class="social-tooltip-links">
+                  <a href="https://github.com/your-username" target="_blank" class="social-tooltip-link">
+                    <img src="/icons/github.svg" alt="GitHub">
+                    GitHub
+                  </a>
+                  <a href="https://mp.weixin.qq.com" target="_blank" class="social-tooltip-link">
+                    <img src="/icons/wechat.svg" alt="公众号">
+                    公众号
+                  </a>
+                  <a href="https://xiaohongshu.com" target="_blank" class="social-tooltip-link">
+                    <img src="/icons/xiaohongshu.svg" alt="小红书">
+                    小红书
+                  </a>
+                  <a href="https://jike.xyz" target="_blank" class="social-tooltip-link">
+                    <img src="/icons/jike.svg" alt="即刻">
+                    即刻
+                  </a>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </header>
@@ -159,6 +187,111 @@ header {
   height: 32px;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.social-link:hover {
+  background: #f5f9ff;
+  color: #0066cc;
+}
+
+.social-link:hover .social-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.social-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.social-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid white;
+}
+
+.social-tooltip-title {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.social-tooltip-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-tooltip-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.social-tooltip-link:hover {
+  background: #f5f9ff;
+  color: #0066cc;
+}
+
+.social-tooltip-link img {
+  width: 16px;
+  height: 16px;
+}
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -283,46 +416,34 @@ footer {
   font-size: 0.85rem;
 }
 
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #aaa;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.social-link:hover {
-  color: white;
-}
-
-.social-icon {
-  width: 16px;
-  height: 16px;
-}
-
 /* Responsive styles */
+@media (max-width: 1200px) {
+  .social-link span {
+    display: none;
+  }
+  
+  .social-links {
+    gap: 10px;
+  }
+  
+  .social-link {
+    padding: 6px;
+  }
+}
+
 @media (max-width: 960px) {
-  .main-nav {
-    gap: 8px;
+  .header-right {
+    gap: 15px;
   }
   
-  .nav-button {
-    padding: 8px 15px;
-    font-size: 0.9rem;
+  .social-links {
+    margin-left: 10px;
   }
-  
-  .footer-content {
-    flex-direction: column;
-  }
-  
-  .footer-links {
-    width: 100%;
-  }
-  
-  .footer-column {
-    width: 100%;
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    display: none;
   }
 }
 
