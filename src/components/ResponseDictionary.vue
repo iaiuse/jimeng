@@ -4,34 +4,45 @@
       <div class="section-number">3</div>
       <h2 class="section-title">响应词典</h2>
     </div>
-    <div class="dictionary-section">
-      <div class="dictionary-tabs">
-        <button 
-          v-for="tab in dictionaryTabs" 
-          :key="tab.id"
-          class="dictionary-tab"
-          :class="{ active: currentDictionaryTab === tab.id }"
-          @click="currentDictionaryTab = tab.id"
-        >
-          {{ tab.name }}
-        </button>
-      </div>
-      <div class="dictionary-content">
-        <div v-for="(item, index) in currentTabContent" 
-             :key="index" 
-             class="dictionary-item" 
-             @click="openPreview(index)">
-          <div class="category-label">{{ item.name }}</div>
-          <div class="image-wrapper">
-            <img :src="item.image" :alt="item.name">
-            <div class="image-overlay">
-              <div class="image-title">{{ item.name }}</div>
-              <div class="image-description">{{ item.name }}</div>
-            </div>
+
+    <!-- 添加浮动导航菜单 -->
+    <div class="floating-nav" :class="{ 'is-visible': showFloatingNav }">
+      <div class="nav-items">
+        <div v-for="category in categories" 
+             :key="category.id" 
+             class="nav-item"
+             :class="{ 'active': activeSection === `category-${category.id}` }"
+             @click="scrollToSection(`category-${category.id}`)">
+          <div class="nav-item-content">
+            <div class="nav-item-title">{{ category.name }}</div>
           </div>
-          <div class="image-caption">
-            <div class="image-title">{{ item.name }}</div>
-            <div class="image-description">{{ item.name }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dictionary-content">
+      <div v-for="category in categories" 
+           :key="category.id" 
+           class="dictionary-category"
+           :id="`category-${category.id}`">
+        <h3 class="category-title">{{ category.name }}</h3>
+        <div class="image-grid">
+          <div v-for="(item, index) in category.items" 
+               :key="index" 
+               class="dictionary-item" 
+               @click="openPreview(category.items, index)">
+            <div class="category-label">{{ item.name }}</div>
+            <div class="image-wrapper">
+              <img :src="getImageUrl(item.filename)" :alt="item.name">
+              <div class="image-overlay">
+                <div class="image-title">{{ item.name }}</div>
+                <div class="image-description">{{ item.description }}</div>
+              </div>
+            </div>
+            <div class="image-caption">
+              <div class="image-title">{{ item.name }}</div>
+              <div class="image-description">{{ item.description }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -47,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import ImagePreview from './ImagePreview.vue'
 
 const dictionaryTabs = [
@@ -513,7 +524,13 @@ const previewImages = computed(() =>
   }))
 )
 
-const openPreview = (index: number) => {
+const openPreview = (items: any[], index: number) => {
+  previewImages.value = items.map(item => ({
+    src: `https://jimeng-image.iaiuse.com/3.0/${item.filename}`,
+    title: item.name,
+    description: item.description,
+    alt: item.alt
+  }))
   previewIndex.value = index
   isPreviewVisible.value = true
 }
@@ -521,6 +538,82 @@ const openPreview = (index: number) => {
 const closePreview = () => {
   isPreviewVisible.value = false
 }
+
+const showFloatingNav = ref(false)
+const activeSection = ref('')
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+const checkScroll = () => {
+  showFloatingNav.value = window.scrollY > 200
+
+  const sections = dictionaryTabs.map(c => `category-${c.id}`)
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        activeSection.value = sectionId
+        break
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', checkScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll)
+})
+
+const getImageUrl = (filename: string) => {
+  return `https://jimeng-image.iaiuse.com/3.0/${filename}`
+}
+
+const categories = [
+  { 
+    id: 'hot', 
+    name: '热门词',
+    items: dictionaryContents.hot
+  },
+  { 
+    id: 'aesthetic', 
+    name: '美学词',
+    items: dictionaryContents.aesthetic
+  },
+  { 
+    id: 'trend', 
+    name: '潮流风格',
+    items: dictionaryContents.trend
+  },
+  { 
+    id: 'image', 
+    name: '影像',
+    items: dictionaryContents.image
+  },
+  { 
+    id: 'design', 
+    name: '设计',
+    items: dictionaryContents.design
+  },
+  { 
+    id: 'art', 
+    name: '艺术',
+    items: dictionaryContents.art
+  },
+  { 
+    id: 'material', 
+    name: '材质',
+    items: dictionaryContents.material
+  }
+]
 </script>
 
 <style scoped>
@@ -592,6 +685,28 @@ const closePreview = () => {
 }
 
 .dictionary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dictionary-category {
+  background-color: white;
+  border-radius: 12px;
+  padding: 35px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.category-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
@@ -676,38 +791,104 @@ const closePreview = () => {
   z-index: 1;
 }
 
-@media (max-width: 1200px) {
-  .dictionary-section {
+.floating-nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  min-width: 200px;
+}
+
+.floating-nav.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.nav-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item-title {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  background: #f5f9ff;
+  border-left-color: #0066cc;
+}
+
+.nav-item:hover .nav-item-title {
+  color: #0066cc;
+}
+
+.nav-item.active {
+  background: #f5f9ff;
+  border-left-color: #0066cc;
+}
+
+.nav-item.active .nav-item-title {
+  color: #0066cc;
+}
+
+@media (max-width: 1400px) {
+  .floating-nav {
+    right: 10px;
+    min-width: 180px;
+  }
+  
+  .nav-item {
+    padding: 10px 15px;
+  }
+
+  .nav-item-title {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-nav {
+    display: none;
+  }
+  
+  .dictionary-category {
     padding: 25px;
   }
   
-  .dictionary-content {
+  .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
   }
 }
 
-@media (max-width: 768px) {
-  .dictionary-content {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-  }
-  
-  .image-caption {
-    padding: 8px 0;
-  }
-
-  .image-title {
-    font-size: 0.95rem;
-  }
-
-  .image-description {
-    font-size: 0.85rem;
-  }
-}
-
 @media (max-width: 480px) {
-  .dictionary-content {
+  .image-grid {
     grid-template-columns: 1fr;
   }
 }
