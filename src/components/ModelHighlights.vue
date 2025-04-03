@@ -247,7 +247,7 @@ const features = [
           { 
             filename: 'pro/anime-5.jpg', 
             alt: '插画风格', 
-            description: '现代插画风格作品' 
+            description: '现代插画风格作品'  
           }
         ]
       }
