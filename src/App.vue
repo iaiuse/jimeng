@@ -3,7 +3,7 @@
     <header>
       <div class="header-container container">
         <a href="#" class="logo">
-          <img src="https://placehold.co/120x30" alt="ByteDance Logo">
+          <img src="/images/waytoagi.png" alt="ByteDance Logo">
           即梦图片3.0
         </a>
         <div class="header-right">
