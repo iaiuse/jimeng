@@ -4,7 +4,7 @@
       <div class="section-number">3</div>
       <h2 class="section-title">响应词典</h2>
     </div>
-
+    
     <!-- 添加浮动导航菜单 -->
     <div class="floating-nav" :class="{ 'is-visible': showFloatingNav }">
       <div class="nav-items">
@@ -20,20 +20,23 @@
       </div>
     </div>
 
-    <div class="dictionary-content">
+    <div class="feature-grid">
       <div v-for="category in categories" 
            :key="category.id" 
-           class="dictionary-category"
+           class="feature-card"
            :id="`category-${category.id}`">
-        <h3 class="category-title">{{ category.name }}</h3>
+        <h3><span>{{ category.name }}</span></h3>
+        
         <div class="image-grid">
           <div v-for="(item, index) in category.items" 
                :key="index" 
-               class="dictionary-item" 
+               class="image-item"
                @click="openPreview(category.items, index)">
             <div class="category-label">{{ item.name }}</div>
             <div class="image-wrapper">
-              <img :src="getImageUrl(item.filename)" :alt="item.name">
+              <img :src="getImageUrl(item.filename)" 
+                   :alt="item.name" 
+                   loading="lazy">
               <div class="image-overlay">
                 <div class="image-title">{{ item.name }}</div>
                 <div class="image-description">{{ item.description }}</div>
@@ -645,46 +648,7 @@ const categories = [
   font-weight: 600;
 }
 
-.dictionary-section {
-  background-color: white;
-  border-radius: 12px;
-  padding: 35px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.dictionary-tabs {
-  display: flex;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 25px;
-  overflow-x: auto;
-  padding-bottom: 1px;
-}
-
-.dictionary-tab {
-  padding: 12px 25px;
-  background: none;
-  border: none;
-  color: #555;
-  font-weight: 500;
-  font-size: 1.1rem;
-  cursor: pointer;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.dictionary-tab:hover {
-  color: #0066cc;
-}
-
-.dictionary-tab.active {
-  color: #0066cc;
-  border-bottom-color: #0066cc;
-}
-
-.dictionary-content {
+.feature-grid {
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -692,17 +656,25 @@ const categories = [
   margin: 0 auto;
 }
 
-.dictionary-category {
+.feature-card {
   background-color: white;
   border-radius: 12px;
-  padding: 35px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 35px;
+  width: 100%;
 }
 
-.category-title {
+.feature-card h3 {
   font-size: 1.8rem;
+  margin-bottom: 20px;
   color: #333;
-  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.feature-card h3 span {
+  color: #0066cc;
+  margin-right: 12px;
   font-weight: 600;
 }
 
@@ -710,9 +682,10 @@ const categories = [
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
+  margin-top: 20px;
 }
 
-.dictionary-item {
+.image-item {
   position: relative;
   cursor: pointer;
   overflow: visible;
@@ -721,27 +694,27 @@ const categories = [
   transition: transform 0.3s ease;
 }
 
-.dictionary-item:hover {
-  transform: translateY(-2px);
-}
-
 .image-wrapper {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  aspect-ratio: 1;
+  aspect-ratio: 16/9;
   background-color: #f5f5f5;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.dictionary-item img {
+.image-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.dictionary-item:hover img {
+.image-item:hover {
+  transform: translateY(-2px);
+}
+
+.image-item:hover img {
   transform: scale(1.05);
 }
 
@@ -757,7 +730,7 @@ const categories = [
   transition: opacity 0.3s ease;
 }
 
-.dictionary-item:hover .image-overlay {
+.image-item:hover .image-overlay {
   opacity: 1;
 }
 
@@ -791,6 +764,7 @@ const categories = [
   z-index: 1;
 }
 
+/* 浮动导航样式 */
 .floating-nav {
   position: fixed;
   right: 20px;
@@ -857,6 +831,51 @@ const categories = [
   color: #0066cc;
 }
 
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .feature-grid {
+    padding: 0 20px;
+  }
+  
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-card {
+    padding: 25px;
+  }
+  
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .image-caption {
+    padding: 8px 0;
+  }
+
+  .image-title {
+    font-size: 0.95rem;
+  }
+
+  .image-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 1400px) {
   .floating-nav {
     right: 10px;
@@ -875,21 +894,6 @@ const categories = [
 @media (max-width: 768px) {
   .floating-nav {
     display: none;
-  }
-  
-  .dictionary-category {
-    padding: 25px;
-  }
-  
-  .image-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .image-grid {
-    grid-template-columns: 1fr;
   }
 }
 </style> 
