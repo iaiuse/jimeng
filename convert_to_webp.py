@@ -3,6 +3,7 @@ import shutil
 import argparse
 from PIL import Image
 from pathlib import Path
+import re
 
 def convert_to_webp(input_path, output_path, backup_path, use_original_names):
     # Create output and backup directories if they don't exist
@@ -15,6 +16,8 @@ def convert_to_webp(input_path, output_path, backup_path, use_original_names):
     # Get all image files in the input directory
     image_files = []
     for root, _, files in os.walk(input_path):
+        # Sort files naturally
+        files.sort(key=lambda x: [int(c) if c.isdigit() else c.lower() for c in re.split('([0-9]+)', x)])
         for file in files:
             if any(file.lower().endswith(fmt) for fmt in supported_formats):
                 image_files.append(os.path.join(root, file))
