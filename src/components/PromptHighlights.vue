@@ -294,21 +294,21 @@ const sceneApplications = ref([
     id: 'ppt',
     label: 'PPT封面背景图',
     description: '适用于演示文稿封面和背景',
-    filename: 'image008.webp',
+    image: 'image008.webp',
     alt: '柔和渐变PPT背景'
   },
   {
     id: 'poster',
     label: '广告海报设计',
     description: '适用于商业广告和宣传海报',
-    filename: 'image009.webp',
+    image: 'image009.webp',
     alt: '烟花图案海报'
   },
   {
     id: 'photo',
     label: '纪实摄影',
     description: '适用于新闻和纪实类摄影作品',
-    filename: 'image010.webp',
+    image: 'image010.webp',
     alt: '科技风格背景'
   }
 ])
@@ -620,30 +620,29 @@ const sceneApplications = ref([
   color: #64748b;
 }
 
-.example-card-horizontal {
-  display: flex;
+.example-card.example-card-horizontal {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: 2rem;
   max-width: 100%;
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .example-image-container {
-  flex: 0 0 40%;
+  width: 100%;
+  height: 100%;
 }
 
 .example-image-container img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
+  height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .example-content-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -707,14 +706,14 @@ const sceneApplications = ref([
     font-size: 1.1rem;
   }
   
-  .example-card-horizontal {
-    flex-direction: column;
+  .example-card.example-card-horizontal {
+    grid-template-columns: 1fr;
     gap: 1rem;
+    padding: 1rem;
   }
   
   .example-image-container {
-    flex: none;
-    width: 100%;
+    min-height: 200px;
   }
   
   .scene-applications {
