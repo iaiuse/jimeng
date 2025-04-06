@@ -76,7 +76,7 @@ import { ref } from 'vue'
 import ImagePreview from './ImagePreview.vue'
 
 const getImageUrl = (filename) => {
-  return `https://jimeng-image.iaiuse.com/3.0/prompt-highlights/${filename}`;
+  return `https://jimeng-image.iaiuse.com/3.0/prompthighlights/${filename}`;
 }
 
 // 图片预览相关状态
