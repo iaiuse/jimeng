@@ -14,8 +14,11 @@
           <p class="highlight-desc">{{ section.description }}</p>
           <div class="highlight-note">{{ section.note }}</div>
           <div class="example-grid">
-            <div v-for="(example, index) in section.examples" :key="index" class="example-card">
-              <img :src="example.image" :alt="example.alt">
+            <div v-for="(example, index) in section.examples" 
+                 :key="index" 
+                 class="example-card"
+                 @click="openPreview(section.examples, index)">
+              <img :src="getImageUrl(example.filename)" :alt="example.alt">
               <div class="example-info">
                 <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
               </div>
@@ -36,8 +39,11 @@
         <!-- 专业词汇部分 -->
         <template v-if="section.id === 'vocabulary'">
           <div class="vocab-examples">
-            <div v-for="item in section.items" :key="item.cn" class="vocab-item">
-              <img :src="item.image" :alt="item.alt">
+            <div v-for="(item, index) in section.items" 
+                 :key="item.cn" 
+                 class="vocab-item"
+                 @click="openPreview(section.items, index)">
+              <img :src="getImageUrl(item.filename)" :alt="item.alt">
               <div class="vocab-pair">
                 <span class="vocab-cn">{{ item.cn }}</span>
                 <span class="vocab-en">{{ item.en }}</span>
@@ -55,11 +61,44 @@
         </div>
       </div>
     </div>
+
+    <ImagePreview
+      :is-visible="isPreviewVisible"
+      :images="previewImages"
+      :initial-index="previewIndex"
+      @close="closePreview"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import ImagePreview from './ImagePreview.vue'
+
+const getImageUrl = (filename) => {
+  return `https://jimeng-image.iaiuse.com/3.0/prompt-highlights/${filename}`;
+}
+
+// 图片预览相关状态
+const isPreviewVisible = ref(false)
+const previewImages = ref([])
+const previewIndex = ref(0)
+
+// 打开预览
+const openPreview = (images, index) => {
+  previewImages.value = images.map(img => ({
+    src: getImageUrl(img.filename),
+    title: img.alt,
+    description: img.description || img.alt
+  }))
+  previewIndex.value = index
+  isPreviewVisible.value = true
+}
+
+// 关闭预览
+const closePreview = () => {
+  isPreviewVisible.value = false
+}
 
 const promptSections = ref([
   {
@@ -69,14 +108,34 @@ const promptSections = ref([
     note: '长提示词并不一定代表好的生图效果，自己输入的提示词可能会比AI生成的更有效',
     examples: [
       {
-        image: '/prompthighlights/image001.webp',
+        filename: 'image001.webp',
         tags: ['复古风格', '海报设计'],
-        alt: '复古汽车海报'
+        alt: '复古汽车海报',
+        description: '复古风格的汽车海报设计，展现经典美学'
       },
       {
-        image: '/prompthighlights/image002.webp',
+        filename: 'image002.webp',
         tags: ['温馨风格', '宠物元素'],
-        alt: '宠物主题海报'
+        alt: '宠物主题海报',
+        description: '温馨可爱的宠物主题设计'
+      },
+      {
+        filename: 'image003.webp',
+        tags: ['商务风格', '简约设计'],
+        alt: '商务简约海报',
+        description: '简约大气的商务风格设计'
+      },
+      {
+        filename: 'image004.webp',
+        tags: ['艺术风格', '创意设计'],
+        alt: '艺术创意海报',
+        description: '富有艺术感的创意设计'
+      },
+      {
+        filename: 'image005.webp',
+        tags: ['科技风格', '未来感'],
+        alt: '科技未来海报',
+        description: '充满未来感的科技风格设计'
       }
     ]
   },
@@ -94,16 +153,39 @@ const promptSections = ref([
     title: '专业词汇的精确性',
     items: [
       {
-        image: '/prompthighlights/image003.webp',
+        filename: 'image006.webp',
         cn: '复古色调',
         en: 'vintage color',
-        alt: '复古色调示例'
+        alt: '复古色调示例',
+        description: '经典复古色调的视觉效果'
       },
       {
-        image: '/prompthighlights/image004.webp',
+        filename: 'image007.webp',
         cn: '强对比',
         en: 'high contrast',
-        alt: '强对比示例'
+        alt: '强对比示例',
+        description: '强烈的明暗对比效果'
+      },
+      {
+        filename: 'image008.webp',
+        cn: '柔和色调',
+        en: 'soft tone',
+        alt: '柔和色调示例',
+        description: '柔和温暖的色调效果'
+      },
+      {
+        filename: 'image009.webp',
+        cn: '冷色调',
+        en: 'cool tone',
+        alt: '冷色调示例',
+        description: '清爽冷色调的视觉效果'
+      },
+      {
+        filename: 'image010.webp',
+        cn: '暖色调',
+        en: 'warm tone',
+        alt: '暖色调示例',
+        description: '温暖明亮的色调效果'
       }
     ]
   }
