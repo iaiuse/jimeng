@@ -22,6 +22,66 @@
               <div class="example-info">
                 <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
               </div>
+              <div v-if="example.details" class="example-details">
+                <div class="detail-section">
+                  <strong>风格：</strong>
+                  <span>{{ example.details.style }}</span>
+                </div>
+                <div class="detail-section" v-if="typeof example.details.composition === 'string'">
+                  <strong>构图：</strong>
+                  <span>{{ example.details.composition }}</span>
+                </div>
+                <div class="detail-section" v-else-if="example.details.composition">
+                  <strong>构图：</strong>
+                  <div class="composition-details">
+                    <span>布局：{{ example.details.composition.layout }}</span>
+                    <span>视角：{{ example.details.composition.viewpoint }}</span>
+                    <span>景别：{{ example.details.composition.range }}</span>
+                  </div>
+                </div>
+                <div class="detail-section">
+                  <strong>元素：</strong>
+                  <div class="element-tags">
+                    <span v-for="element in example.details.elements" 
+                          :key="element" 
+                          class="element-tag">
+                      {{ element }}
+                    </span>
+                  </div>
+                </div>
+                <div class="detail-section">
+                  <strong>色彩：</strong>
+                  <span v-if="typeof example.details.colors === 'string'">
+                    {{ example.details.colors }}
+                  </span>
+                  <div v-else class="color-details">
+                    <span>主色调：{{ example.details.colors.main }}</span>
+                    <span>配色：{{ example.details.colors.palette }}</span>
+                  </div>
+                </div>
+                <div class="detail-section" v-if="example.details.effects">
+                  <strong>特效：</strong>
+                  <div class="effects-list">
+                    <span v-for="effect in example.details.effects" 
+                          :key="effect" 
+                          class="effect-item">
+                      {{ effect }}
+                    </span>
+                  </div>
+                </div>
+                <div class="detail-section" v-if="example.details.text">
+                  <strong>文字：</strong>
+                  <div class="text-details">
+                    <p>内容：{{ example.details.text.content }}</p>
+                    <p>位置：{{ example.details.text.position }}</p>
+                    <p>补充：{{ example.details.text.additional }}</p>
+                  </div>
+                </div>
+                <div class="detail-section" v-if="example.details.mood">
+                  <strong>氛围：</strong>
+                  <span>{{ example.details.mood }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </template>
@@ -111,31 +171,72 @@ const promptSections = ref([
         filename: 'image001.webp',
         tags: ['复古风格', '海报设计'],
         alt: '复古汽车海报',
-        description: '复古风格的汽车海报设计，展现经典美学'
+        description: '复古风格的汽车海报设计，展现经典美学',
+        details: {
+          style: '复古美式风格',
+          composition: '海报设计',
+          elements: ['复古汽车', '公路场景', '山地背景'],
+          colors: '复古蓝绿色调',
+          mood: '自由探索精神'
+        }
       },
       {
         filename: 'image002.webp',
         tags: ['温馨风格', '宠物元素'],
         alt: '宠物主题海报',
-        description: '温馨可爱的宠物主题设计'
+        description: '温馨可爱的宠物主题设计',
+        details: {
+          style: '温馨插画风格',
+          composition: '宠物主题海报',
+          elements: ['可爱狗狗', '猫咪', '中国建筑元素'],
+          colors: '暖色调为主',
+          mood: '温馨友好'
+        }
       },
       {
         filename: 'image003.webp',
         tags: ['商务风格', '简约设计'],
-        alt: '商务简约海报',
-        description: '简约大气的商务风格设计'
+        alt: '美食主题海报',
+        description: '简约大气的美食广告设计',
+        details: {
+          style: '商业美食摄影',
+          composition: '美食广告设计',
+          elements: ['炸鸡', '薯条', '饮品'],
+          colors: '暖色调，高饱和度',
+          mood: '美味诱人'
+        }
       },
       {
         filename: 'image004.webp',
         tags: ['艺术风格', '创意设计'],
-        alt: '艺术创意海报',
-        description: '富有艺术感的创意设计'
-      },
-      {
-        filename: 'image005.webp',
-        tags: ['科技风格', '未来感'],
-        alt: '科技未来海报',
-        description: '充满未来感的科技风格设计'
+        alt: '春季主题广告',
+        description: '广告海报设计，卡通Q版风格',
+        details: {
+          style: '卡通插画风格',
+          composition: {
+            layout: '动态构图',
+            viewpoint: '仰视视角',
+            range: '中景到全景'
+          },
+          elements: ['卡通人物', '新鲜食材', '动态效果'],
+          colors: {
+            main: '暖色调',
+            palette: '橙黄色和绿色搭配'
+          },
+          effects: [
+            '光影强烈对比',
+            '强烈反射折射效果',
+            '超高质量渲染',
+            '3D渲染',
+            '数字艺术',
+            'C4D与OC渲染器'
+          ],
+          text: {
+            content: '"呼伦贝尔肉业集团春季推广"',
+            position: '左下角',
+            additional: '日期和地点信息，字体为小号'
+          }
+        }
       }
     ]
   },
@@ -325,6 +426,73 @@ const sceneTags = ref([
 
 .example-tag:hover {
   background: #e2e8f0;
+}
+
+.example-details {
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.detail-section {
+  margin-bottom: 0.5rem;
+}
+
+.detail-section strong {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.detail-section span {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.composition-details {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.element-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.element-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #f1f5f9;
+  border-radius: 4px;
+  color: #475569;
+}
+
+.color-details {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.effects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.effect-item {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: #f1f5f9;
+  border-radius: 4px;
+  color: #475569;
+}
+
+.text-details {
+  margin-top: 0.5rem;
+}
+
+.text-details p {
+  margin: 0.25rem 0;
 }
 
 .description-points {

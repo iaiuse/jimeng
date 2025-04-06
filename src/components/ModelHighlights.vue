@@ -87,7 +87,7 @@ const openPreview = (images, index) => {
   previewImages.value = images.map(img => ({
     src: getImageUrl(img.filename),
     title: img.alt,
-    description: img.alt
+    description: img.description
   }))
   previewIndex.value = index
   isPreviewVisible.value = true

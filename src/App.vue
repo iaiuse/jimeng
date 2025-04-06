@@ -44,6 +44,7 @@
       <div class="footer-content">
         <div class="footer-info">
           <p>即梦图片3.0模型是由ByteDance开发的新一代AI图像生成技术，提供真实、高清、专业的图像创作体验。</p>
+          <p class="reference-info">参考文档：<a href="https://bytedance.larkoffice.com/docx/EVYXdpdmhoVc0sxXR6dcsOu6nXc" target="_blank" rel="noopener noreferrer">即梦图片3.0模型 提示词攻略手册</a></p>
         </div>
       </div>
       <div class="footer-links">
@@ -245,6 +246,21 @@ footer {
   font-size: 0.9rem;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.reference-info {
+  margin-top: 10px;
+}
+
+.reference-info a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.reference-info a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .footer-links {
