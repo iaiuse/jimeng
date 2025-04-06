@@ -16,70 +16,73 @@
           <div class="example-grid">
             <div v-for="(example, index) in section.examples" 
                  :key="index" 
-                 class="example-card"
+                 :class="['example-card', { 'example-card-horizontal': example.filename === 'image004.webp' }]"
                  @click="openPreview(section.examples, index)">
-              <img :src="getImageUrl(example.filename)" :alt="example.alt">
-              <div class="example-info">
-                <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
+              <div :class="{'example-image-container': example.filename === 'image004.webp'}">
+                <img :src="getImageUrl(example.filename)" :alt="example.alt">
+                <div class="example-info" v-if="example.filename !== 'image004.webp'">
+                  <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
+                </div>
               </div>
-              <div v-if="example.details" class="example-details">
-                <div class="detail-section">
-                  <strong>风格：</strong>
-                  <span>{{ example.details.style }}</span>
+              <div :class="{'example-content-container': example.filename === 'image004.webp'}">
+                <div class="example-info" v-if="example.filename === 'image004.webp'">
+                  <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
                 </div>
-                <div class="detail-section" v-if="typeof example.details.composition === 'string'">
-                  <strong>构图：</strong>
-                  <span>{{ example.details.composition }}</span>
-                </div>
-                <div class="detail-section" v-else-if="example.details.composition">
-                  <strong>构图：</strong>
-                  <div class="composition-details">
-                    <span>布局：{{ example.details.composition.layout }}</span>
-                    <span>视角：{{ example.details.composition.viewpoint }}</span>
-                    <span>景别：{{ example.details.composition.range }}</span>
+                <div v-if="example.details" class="example-details">
+                  <div class="detail-section">
+                    <strong>风格：</strong>
+                    <span>{{ example.details.style }}</span>
                   </div>
-                </div>
-                <div class="detail-section">
-                  <strong>元素：</strong>
-                  <div class="element-tags">
-                    <span v-for="element in example.details.elements" 
-                          :key="element" 
-                          class="element-tag">
-                      {{ element }}
+                  <div class="detail-section" v-if="typeof example.details.composition === 'string'">
+                    <strong>构图：</strong>
+                    <span>{{ example.details.composition }}</span>
+                  </div>
+                  <div class="detail-section" v-else-if="example.details.composition">
+                    <strong>构图：</strong>
+                    <div class="composition-details">
+                      <div class="composition-item">布局：{{ example.details.composition.layout }}</div>
+                      <div class="composition-item">视角：{{ example.details.composition.viewpoint }}</div>
+                      <div class="composition-item">景别：{{ example.details.composition.range }}</div>
+                    </div>
+                  </div>
+                  <div class="detail-section">
+                    <strong>元素：</strong>
+                    <div class="element-tags">
+                      <span v-for="element in example.details.elements" 
+                            :key="element" 
+                            class="element-tag">
+                        {{ element }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="detail-section">
+                    <strong>色彩：</strong>
+                    <span v-if="typeof example.details.colors === 'string'">
+                      {{ example.details.colors }}
                     </span>
+                    <div v-else class="color-details">
+                      <div>主色调：{{ example.details.colors.main }}</div>
+                      <div>配色：{{ example.details.colors.palette }}</div>
+                    </div>
                   </div>
-                </div>
-                <div class="detail-section">
-                  <strong>色彩：</strong>
-                  <span v-if="typeof example.details.colors === 'string'">
-                    {{ example.details.colors }}
-                  </span>
-                  <div v-else class="color-details">
-                    <span>主色调：{{ example.details.colors.main }}</span>
-                    <span>配色：{{ example.details.colors.palette }}</span>
+                  <div class="detail-section" v-if="example.details.effects">
+                    <strong>特效：</strong>
+                    <div class="effects-list">
+                      <span v-for="effect in example.details.effects" 
+                            :key="effect" 
+                            class="effect-item">
+                        {{ effect }}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div class="detail-section" v-if="example.details.effects">
-                  <strong>特效：</strong>
-                  <div class="effects-list">
-                    <span v-for="effect in example.details.effects" 
-                          :key="effect" 
-                          class="effect-item">
-                      {{ effect }}
-                    </span>
+                  <div class="detail-section" v-if="example.details.text">
+                    <strong>文字：</strong>
+                    <div class="text-details">
+                      <p>内容：{{ example.details.text.content }}</p>
+                      <p>位置：{{ example.details.text.position }}</p>
+                      <p>补充：{{ example.details.text.additional }}</p>
+                    </div>
                   </div>
-                </div>
-                <div class="detail-section" v-if="example.details.text">
-                  <strong>文字：</strong>
-                  <div class="text-details">
-                    <p>内容：{{ example.details.text.content }}</p>
-                    <p>位置：{{ example.details.text.position }}</p>
-                    <p>补充：{{ example.details.text.additional }}</p>
-                  </div>
-                </div>
-                <div class="detail-section" v-if="example.details.mood">
-                  <strong>氛围：</strong>
-                  <span>{{ example.details.mood }}</span>
                 </div>
               </div>
             </div>
@@ -585,6 +588,59 @@ const sceneTags = ref([
   transform: translateY(-2px);
 }
 
+.example-card-horizontal {
+  display: flex;
+  gap: 2rem;
+  max-width: 100%;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.example-image-container {
+  flex: 0 0 40%;
+}
+
+.example-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.example-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.example-card-horizontal .example-details {
+  padding: 0;
+  background: transparent;
+}
+
+.composition-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.composition-item {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.color-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .prompt-highlights {
     padding: 1rem;
@@ -617,6 +673,16 @@ const sceneTags = ref([
   
   .highlight-title {
     font-size: 1.1rem;
+  }
+  
+  .example-card-horizontal {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .example-image-container {
+    flex: none;
+    width: 100%;
   }
 }
 </style>
