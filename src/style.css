@@ -1,3 +1,8 @@
+/* 全局基础样式 */
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+/* 或使用 CDN */
+/* @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'; */
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -7,42 +12,38 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   color: #333;
   line-height: 1.6;
+  font-size: 16px;
 }
 
-/* Container */
+/* 通用容器类 */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
 }
 
-/* Links */
+/* 通用链接样式 */
 a {
   color: #0066cc;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-a:hover {
-  color: #0052a3;
-}
-
-/* Buttons */
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-/* Images */
+/* 通用图片样式 */
 img {
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+/* Header styles */
+header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
