@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 大雨@WaytoAGI. All rights reserved.</p>
+          <p>© 2025 大雨@waytoagi. All rights reserved.</p>
         </div>
       </div>
     </footer>
