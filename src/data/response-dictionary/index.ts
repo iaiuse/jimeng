@@ -10,43 +10,43 @@ export const features = [
   {
     id: 1,
     title: '热门词',
-    description: '当前最受欢迎的响应词，适合快速生成高质量图像',
+    subtitle: '当前最受欢迎的响应词，适合快速生成高质量图像',
     items: hotItems
   },
   {
     id: 2,
     title: '美学词',
-    description: '不同美学风格的响应词，适合特定艺术风格创作',
+    subtitle: '不同美学风格的响应词，适合特定艺术风格创作',
     items: aestheticItems
   },
   {
     id: 3,
     title: '潮流风格',
-    description: '当前流行的艺术和插画风格，适合创作不同类型的视觉作品',
+    subtitle: '当前流行的艺术和插画风格，适合创作不同类型的视觉作品',
     items: trendItems
   },
   {
     id: 4,
     title: '影像',
-    description: '专业摄影和电影镜头语言，适合影视风格创作',
+    subtitle: '专业摄影和电影镜头语言，适合影视风格创作',
     items: imageItems
   },
   {
     id: 5,
     title: '设计',
-    description: '专业设计领域的风格和技巧，适合设计类创作',
+    subtitle: '专业设计领域的风格和技巧，适合设计类创作',
     items: designItems
   },
   {
     id: 6,
     title: '艺术',
-    description: '传统和现代艺术风格，适合艺术类创作',
+    subtitle: '传统和现代艺术风格，适合艺术类创作',
     items: artItems
   },
   {
     id: 7,
     title: '材质',
-    description: '不同材质的表现效果，适合材质渲染创作',
+    subtitle: '不同材质的表现效果，适合材质渲染创作',
     items: materialItems
   }
 ]

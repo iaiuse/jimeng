@@ -69,7 +69,7 @@ import { features } from '../data/showcase'
 import type { ResponseItem } from '../data/showcase'
 
 const getImageUrl = (filename: string) => {
-  return `https://jimeng-image.iaiuse.com/3.0/response-directonary/${filename}`
+  return `https://jimeng-image.iaiuse.com/3.0/more-showcase/${filename}`
 }
 
 // 图片预览相关状态
