@@ -116,11 +116,19 @@
         </template>
       </div>
 
-      <!-- 场景推荐 -->
+      <!-- 场景应用推荐 -->
       <div class="highlight-section">
         <h3 class="highlight-title">场景应用推荐</h3>
-        <div class="scene-tags">
-          <span v-for="tag in sceneTags" :key="tag" class="scene-tag">{{ tag }}</span>
+        <div class="scene-applications">
+          <div v-for="scene in sceneApplications" 
+               :key="scene.id" 
+               class="scene-card">
+            <img :src="getImageUrl(scene.image)" :alt="scene.alt" class="scene-image">
+            <div class="scene-info">
+              <div class="scene-tag">{{ scene.label }}</div>
+              <div class="scene-description">{{ scene.description }}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -257,48 +265,52 @@ const promptSections = ref([
     title: '专业词汇的精确性',
     items: [
       {
-        filename: 'image006.webp',
+        filename: 'image005.webp',
         cn: '复古色调',
         en: 'vintage color',
-        alt: '复古色调示例',
-        description: '经典复古色调的视觉效果'
+        alt: '复古色调猫咪照片',
+        description: '展现经典复古色调效果的猫咪照片'
+      },
+      {
+        filename: 'image006.webp',
+        cn: '强对比',
+        en: 'high contrast',
+        alt: '高对比度黑白猫咪照片',
+        description: '黑白色调下的强对比度猫咪剪影'
       },
       {
         filename: 'image007.webp',
-        cn: '强对比',
-        en: 'high contrast',
-        alt: '强对比示例',
-        description: '强烈的明暗对比效果'
-      },
-      {
-        filename: 'image008.webp',
         cn: '柔和色调',
         en: 'soft tone',
-        alt: '柔和色调示例',
-        description: '柔和温暖的色调效果'
-      },
-      {
-        filename: 'image009.webp',
-        cn: '冷色调',
-        en: 'cool tone',
-        alt: '冷色调示例',
-        description: '清爽冷色调的视觉效果'
-      },
-      {
-        filename: 'image010.webp',
-        cn: '暖色调',
-        en: 'warm tone',
-        alt: '暖色调示例',
-        description: '温暖明亮的色调效果'
+        alt: '柔和色调抽象图案',
+        description: '蓝绿色系的柔和渐变抽象图案'
       }
     ]
   }
 ])
 
-const sceneTags = ref([
-  'PPT封面背景图',
-  '广告海报设计',
-  '纪实摄影'
+const sceneApplications = ref([
+  {
+    id: 'ppt',
+    label: 'PPT封面背景图',
+    description: '适用于演示文稿封面和背景',
+    filename: 'image008.webp',
+    alt: '柔和渐变PPT背景'
+  },
+  {
+    id: 'poster',
+    label: '广告海报设计',
+    description: '适用于商业广告和宣传海报',
+    filename: 'image009.webp',
+    alt: '烟花图案海报'
+  },
+  {
+    id: 'photo',
+    label: '纪实摄影',
+    description: '适用于新闻和纪实类摄影作品',
+    filename: 'image010.webp',
+    alt: '科技风格背景'
+  }
 ])
 </script>
 
@@ -567,25 +579,45 @@ const sceneTags = ref([
   font-family: 'Courier New', monospace;
 }
 
-.scene-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+.scene-applications {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.scene-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scene-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.scene-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.scene-info {
+  padding: 1rem;
 }
 
 .scene-tag {
-  padding: 0.5rem 1rem;
-  background: #f1f5f9;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  color: #475569;
-  transition: all 0.2s ease;
-  cursor: pointer;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
 }
 
-.scene-tag:hover {
-  background: #e2e8f0;
-  transform: translateY(-2px);
+.scene-description {
+  font-size: 0.875rem;
+  color: #64748b;
 }
 
 .example-card-horizontal {
@@ -683,6 +715,14 @@ const sceneTags = ref([
   .example-image-container {
     flex: none;
     width: 100%;
+  }
+  
+  .scene-applications {
+    grid-template-columns: 1fr;
+  }
+  
+  .scene-image {
+    height: 140px;
   }
 }
 </style>
