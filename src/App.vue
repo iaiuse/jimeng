@@ -44,46 +44,46 @@
         <div class="footer-info">
           <p>即梦图片3.0模型是由ByteDance开发的新一代AI图像生成技术，提供真实、高清、专业的图像创作体验。</p>
         </div>
-        <div class="footer-links">
-          <ul class="social-list">
-            <li>
-              <a href="https://github.com/iaiuse" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-                <div class="qr-tooltip">
-                  <img src="/qr/github-qr.png" alt="GitHub QR Code">
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="https://okjk.co/T4JBo0" target="_blank" class="social-link">
-                <i class="fas fa-compass"></i>
-                <span>即刻</span>
-                <div class="qr-tooltip">
-                  <img src="/qr/jike-qr.png" alt="即刻 QR Code">
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.xiaohongshu.com/user/profile/5b2bc6dbf7e8b97ff70a63b2" target="_blank" class="social-link">
-                <i class="fas fa-book"></i>
-                <span>小红书</span>
-                <div class="qr-tooltip">
-                  <img src="/qr/xiaohongshu-qr.png" alt="小红书 QR Code">
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="https://mp.weixin.qq.com/s/Eh8vlal4L02eToTOlaeFww" target="_blank" class="social-link">
-                <i class="fab fa-weixin"></i>
-                <span>公众号</span>
-                <div class="qr-tooltip">
-                  <img src="/qr/wechat-qr.png" alt="公众号 QR Code">
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
+      </div>
+      <div class="footer-links">
+        <ul class="social-list">
+          <li>
+            <a href="https://github.com/iaiuse" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+              <div class="qr-tooltip">
+                <img src="/qr/github-qr.png" alt="GitHub QR Code">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://okjk.co/T4JBo0" target="_blank" class="social-link">
+              <i class="fas fa-compass"></i>
+              <span>即刻</span>
+              <div class="qr-tooltip">
+                <img src="/qr/jike-qr.png" alt="即刻 QR Code">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.xiaohongshu.com/user/profile/5b2bc6dbf7e8b97ff70a63b2" target="_blank" class="social-link">
+              <i class="fas fa-book"></i>
+              <span>小红书</span>
+              <div class="qr-tooltip">
+                <img src="/qr/xiaohongshu-qr.png" alt="小红书 QR Code">
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://mp.weixin.qq.com/s/Eh8vlal4L02eToTOlaeFww" target="_blank" class="social-link">
+              <i class="fab fa-weixin"></i>
+              <span>公众号</span>
+              <div class="qr-tooltip">
+                <img src="/qr/wechat-qr.png" alt="公众号 QR Code">
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
       <div class="footer-bottom">
         <p>© 2025 大雨@waytoagi. All rights reserved.</p>
@@ -221,27 +221,26 @@ footer {
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  text-align: center;
 }
 
 .footer-info {
-  flex: 1;
+  margin-bottom: 30px;
 }
 
 .footer-info p {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
-  max-width: 600px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .footer-links {
-  display: flex;
-  gap: 20px;
+  margin: 30px auto;
+  text-align: center;
 }
 
 .social-list {
@@ -249,6 +248,7 @@ footer {
   padding: 0;
   margin: 0;
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -257,6 +257,10 @@ footer {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   transition: color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 .social-link i {
@@ -264,7 +268,8 @@ footer {
 }
 
 .social-link span {
-  display: none;
+  display: block;
+  font-size: 12px;
 }
 
 .qr-tooltip {
@@ -278,6 +283,12 @@ footer {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
+  width: 120px;
+  height: 120px;
+}
+
+.social-link:hover {
+  color: #fff;
 }
 
 .social-link:hover .qr-tooltip {
@@ -286,20 +297,16 @@ footer {
 }
 
 .qr-tooltip img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   display: block;
 }
 
-.qr-tooltip p {
-  display: none;
-}
-
 .footer-bottom {
-  margin-top: 40px;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8rem;
+  margin-top: 20px;
 }
 
 /* 修改主内容区域背景色 */
@@ -334,6 +341,15 @@ footer {
   .main-nav {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .social-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .social-link {
+    margin: 10px;
   }
 }
 </style> 
