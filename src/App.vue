@@ -6,7 +6,7 @@
           <img src="/vite.svg" alt="Logo" class="logo-img">
           即梦图片3.0
         </a>
-        <button class="menu-toggle" @click="toggleMenu">
+        <button class="menu-toggle" :class="{ 'menu-open': isMenuOpen }" @click="toggleMenu">
           <span></span>
           <span></span>
           <span></span>
@@ -330,6 +330,52 @@ footer {
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 0;
+  }
+
+  .menu-toggle span:first-child {
+    top: 0;
+  }
+
+  .menu-toggle span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .menu-toggle span:last-child {
+    bottom: 0;
+  }
+
+  /* 菜单打开时的动画效果 */
+  .menu-toggle.menu-open span:first-child {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+
+  .menu-toggle.menu-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.menu-open span:last-child {
+    transform: rotate(-45deg);
+    bottom: 50%;
   }
   
   .header-right {
