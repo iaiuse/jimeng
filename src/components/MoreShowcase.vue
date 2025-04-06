@@ -1,27 +1,54 @@
 <template>
-  <section id="more-showcase" class="showcase-section">
+  <section id="response-dictionary">
     <div class="section-header">
-      <div class="section-number">4</div>
-      <h2 class="section-title">更多Showcase</h2>
+      <div class="section-number">3</div>
+      <h2 class="section-title">更多展示</h2>
     </div>
-    <div class="showcase-header">
-      <div class="showcase-categories">
-        <button 
-          v-for="category in categories" 
-          :key="category.id"
-          class="category-button"
-          :class="{ active: currentCategory === category.id }"
-          @click="currentCategory = category.id"
-        >
-          {{ category.name }}
-        </button>
+    
+    <!-- 添加浮动导航菜单 -->
+    <div class="floating-nav" :class="{ 'is-visible': showFloatingNav }">
+      <div class="nav-items">
+        <div v-for="feature in features" 
+             :key="feature.id" 
+             class="nav-item"
+             :class="{ 'active': activeSection === `feature-${feature.id}` }"
+             @click="scrollToSection(`feature-${feature.id}`)">
+          <div class="nav-item-content">
+            <div class="nav-item-title">{{ feature.title }}</div>
+            <div class="nav-item-subtitle">{{ feature.subtitle }}</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="showcase-grid">
-      <div v-for="(item, index) in filteredShowcase" :key="index" class="showcase-item" @click="openPreview(index)">
-        <img :src="item.image" :alt="item.title">
-        <div class="overlay">
-          <h4>{{ item.title }}</h4>
+
+    <div class="feature-grid">
+      <div v-for="feature in features" 
+           :key="feature.id" 
+           class="feature-card"
+           :id="`feature-${feature.id}`">
+        <h3><span>{{ feature.title }}</span></h3>
+        <p>{{ feature.description }}</p>
+        
+        <div class="image-grid">
+          <div v-for="(item, index) in feature.items" 
+               :key="index" 
+               class="image-item"
+               @click="openPreview(feature.items, index)">
+            <div class="category-label">{{ item.name }}</div>
+            <div class="image-wrapper">
+              <img :src="getImageUrl(item.filename)" 
+                   :alt="item.name" 
+                   loading="lazy">
+              <div class="image-overlay">
+                <div class="image-title">{{ item.name }}</div>
+                <div class="image-description">{{ item.description }}</div>
+              </div>
+            </div>
+            <div class="image-caption">
+              <div class="image-title">{{ item.name }}</div>
+              <div class="image-description">{{ item.description }}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -36,213 +63,78 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import ImagePreview from './ImagePreview.vue'
+import { features } from '../data/showcase'
+import type { ResponseItem } from '../data/showcase'
 
-const categories = [
-  { id: 'all', name: '全部' },
-  { id: 'image', name: '影像' },
-  { id: 'art', name: '艺术' },
-  { id: 'design', name: '设计' },
-  { id: 'anime', name: '动漫风格' },
-  { id: 'material', name: '材质' }
-]
+const getImageUrl = (filename: string) => {
+  return `https://jimeng-image.iaiuse.com/3.0/response-directonary/${filename}`
+}
 
-const currentCategory = ref('all')
-
-const showcaseItems = [
-  {
-    id: 1,
-    title: '写实人像风格',
-    image: '/api/placeholder/400/300',
-    category: 'image'
-  },
-  {
-    id: 2,
-    title: '电影叙事风格',
-    image: '/api/placeholder/400/300',
-    category: 'image'
-  },
-  {
-    id: 3,
-    title: '动漫场景风格',
-    image: '/api/placeholder/400/300',
-    category: 'anime'
-  },
-  {
-    id: 4,
-    title: '奇幻概念艺术',
-    image: '/api/placeholder/400/300',
-    category: 'art'
-  },
-  {
-    id: 5,
-    title: '写实质感材质',
-    image: '/api/placeholder/400/300',
-    category: 'material'
-  },
-  {
-    id: 6,
-    title: '插画艺术风格',
-    image: '/api/placeholder/400/300',
-    category: 'art'
-  },
-  {
-    id: 7,
-    title: 'UI设计展示',
-    image: '/api/placeholder/400/300',
-    category: 'design'
-  },
-  {
-    id: 8,
-    title: '品牌设计案例',
-    image: '/api/placeholder/400/300',
-    category: 'design'
-  }
-]
-
-const filteredShowcase = computed(() => {
-  if (currentCategory.value === 'all') {
-    return showcaseItems
-  }
-  return showcaseItems.filter(item => item.category === currentCategory.value)
-})
-
+// 图片预览相关状态
 const isPreviewVisible = ref(false)
+const previewImages = ref<any[]>([])
 const previewIndex = ref(0)
 
-const previewImages = computed(() => 
-  filteredShowcase.value.map(item => ({
-    src: item.image,
-    title: item.title,
-    description: item.category
+// 打开预览
+const openPreview = (items: ResponseItem[], index: number) => {
+  previewImages.value = items.map(item => ({
+    src: getImageUrl(item.filename),
+    title: item.name,
+    description: item.description,
+    alt: item.alt
   }))
-)
-
-const openPreview = (index: number) => {
   previewIndex.value = index
   isPreviewVisible.value = true
 }
 
+// 关闭预览
 const closePreview = () => {
   isPreviewVisible.value = false
 }
+
+// 浮动导航相关
+const showFloatingNav = ref(false)
+const activeSection = ref('')
+
+// 滚动到指定区域
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+// 检查滚动位置并更新导航状态
+const checkScroll = () => {
+  // 显示/隐藏浮动导航
+  showFloatingNav.value = window.scrollY > 200
+
+  // 更新当前激活的区域
+  const sections = features.map(f => `feature-${f.id}`)
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        activeSection.value = sectionId
+        break
+      }
+    }
+  }
+}
+
+// 监听滚动事件
+onMounted(() => {
+  window.addEventListener('scroll', checkScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll)
+})
 </script>
 
-<style scoped>
-.section-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 25px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.section-number {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background-color: #0066cc;
-  color: white;
-  border-radius: 50%;
-  margin-right: 15px;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  color: #333;
-  font-weight: 600;
-}
-
-.showcase-section {
-  margin-top: 50px;
-}
-
-.showcase-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-
-.showcase-categories {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-}
-
-.category-button {
-  padding: 10px 20px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 25px;
-  color: #555;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.category-button:hover, .category-button.active {
-  background-color: #0066cc;
-  color: white;
-  border-color: #0066cc;
-}
-
-.showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.showcase-item {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.showcase-item:hover {
-  transform: scale(1.02);
-}
-
-.showcase-item img {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-
-.showcase-item .overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  color: white;
-  padding: 25px 20px 20px;
-}
-
-.showcase-item h4 {
-  font-size: 1.3rem;
-  margin-bottom: 8px;
-}
-
-@media (max-width: 768px) {
-  .showcase-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
-}
-
-@media (max-width: 576px) {
-  .showcase-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style> 
+<style>
+@import '../styles/shared-section.css';
+</style>
