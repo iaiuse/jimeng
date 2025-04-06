@@ -5,7 +5,12 @@
         <a href="#" class="logo">
           即梦图片3.0
         </a>
-        <div class="header-right">
+        <button class="menu-toggle" @click="toggleMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="header-right" :class="{ 'menu-open': isMenuOpen }">
           <nav class="main-nav">
             <a 
               v-for="tab in tabs" 
@@ -114,6 +119,7 @@ const tabs = [
 ]
 
 const currentTab = ref('model-highlights')
+const isMenuOpen = ref(false)
 
 const currentComponent = computed(() => {
   switch (currentTab.value) {
@@ -129,6 +135,10 @@ const currentComponent = computed(() => {
       return ModelHighlights
   }
 })
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 </script>
 
 <style>
@@ -148,7 +158,7 @@ body {
 }
 
 .container {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -433,28 +443,44 @@ footer {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header-right {
+    display: none;
+    width: 100%;
+  }
+
+  .header-right.menu-open {
+    display: block;
+  }
+
   .header-container {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
+    flex-wrap: wrap;
   }
 
   .main-nav {
-    width: 100%;
-    overflow-x: auto;
-    padding: 5px 0;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 20px;
-  }
-
-  .main-nav::-webkit-scrollbar {
-    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
   }
 
   .nav-link {
-    font-size: 1rem;
-    white-space: nowrap;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .menu-open .menu-toggle span:first-child {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-open .menu-toggle span:last-child {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
 
@@ -543,5 +569,26 @@ footer {
   .social-link i {
     font-size: 18px;
   }
+}
+
+/* 添加汉堡菜单样式 */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: all 0.3s ease;
 }
 </style> 
