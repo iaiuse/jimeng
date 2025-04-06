@@ -234,34 +234,34 @@ const features = [
         alt: 'Retro Snapshot效果'
       },
       { 
+        name: '美式叛逆风', 
+        description: '美式叛逆青春风格',
+        filename: 'hot/17.webp',  // 
+        alt: '美式叛逆青春风格'
+      },
+      { 
         name: 'X光片', 
         description: 'X光片风格',
-        filename: 'hot/17.webp',  // X光片兔子图
-        alt: 'X光片效果'
+        filename: 'hot/18.webp',  // X光片兔子图
+        alt: 'X光片风格，骨骼透视效果'
       },
       { 
         name: '美式复古儿童书籍', 
-        description: '美式复古儿童书籍',
-        filename: 'hot/18.webp',  // 美式儿童书封面
-        alt: '美式复古儿童书籍风格'
-      },
-      { 
-        name: '可爱萌系', 
-        description: '可爱萌系',
-        filename: 'hot/19.webp',  // 可爱卡通女孩图
+        description: '美式复古儿童书籍封面风格',
+        filename: 'hot/19.webp',  // 可爱女孩吹泡泡图
         alt: '可爱萌系风格'
       },
       { 
-        name: '少女漫画', 
-        description: '少女漫画',
-        filename: 'hot/20.webp',  // 吹泡泡女孩图
-        alt: '少女漫画风格'
+        name: '可爱萌系', 
+        description: '可爱萌系插画风格',
+        filename: 'hot/20.webp',  // 少女漫画风格图
+        alt: '可爱萌系插画风格'
       },
       { 
-        name: '美式叛逆风', 
-        description: '美式叛逆风格',
-        filename: 'hot/21.webp',  // 吹泡泡叛逆女孩图
-        alt: '美式叛逆风格'
+        name: '少女漫画', 
+        description: '少女漫画风格，清新唯美',
+        filename: 'hot/21.webp',  // 美式叛逆风格图
+        alt: '少女漫画风格'
       },
       { 
         name: 'Nakada Ikumi', 
