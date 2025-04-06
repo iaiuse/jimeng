@@ -40,65 +40,53 @@
     </main>
 
     <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-info">
-            <div class="footer-logo">
-              <img src="/images/waytoagi.png" alt="WaytoAGI Logo">
-            </div>
-            <p>即梦图片3.0模型是由ByteDance开发的新一代AI图像生成技术，提供真实、高清、专业的图像创作体验。</p>
-          </div>
-          <div class="footer-links">
-            <div class="footer-column">
-              <h4>关注我们</h4>
-              <ul class="social-list">
-                <li>
-                  <a href="https://github.com/iaiuse" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                    <div class="qr-tooltip">
-                      <img src="/qr/github-qr.png" alt="GitHub QR Code">
-                      <p>扫码关注我们的GitHub</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://okjk.co/T4JBo0" target="_blank" class="social-link">
-                    <i class="fas fa-compass"></i>
-                    即刻
-                    <div class="qr-tooltip">
-                      <img src="/qr/jike-qr.png" alt="即刻 QR Code">
-                      <p>扫码关注我们的即刻</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.xiaohongshu.com/user/profile/5b2bc6dbf7e8b97ff70a63b2" target="_blank" class="social-link">
-                    <i class="fas fa-book"></i>
-                    小红书
-                    <div class="qr-tooltip">
-                      <img src="/qr/xiaohongshu-qr.png" alt="小红书 QR Code">
-                      <p>扫码关注我们的小红书</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://mp.weixin.qq.com/s/Eh8vlal4L02eToTOlaeFww" target="_blank" class="social-link">
-                    <i class="fab fa-weixin"></i>
-                    公众号
-                    <div class="qr-tooltip">
-                      <img src="/qr/wechat-qr.png" alt="公众号 QR Code">
-                      <p>扫码关注我们的公众号</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+      <div class="footer-content">
+        <div class="footer-info">
+          <p>即梦图片3.0模型是由ByteDance开发的新一代AI图像生成技术，提供真实、高清、专业的图像创作体验。</p>
         </div>
-        <div class="footer-bottom">
-          <p>© 2025 大雨@waytoagi. All rights reserved.</p>
+        <div class="footer-links">
+          <ul class="social-list">
+            <li>
+              <a href="https://github.com/iaiuse" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+                <div class="qr-tooltip">
+                  <img src="/qr/github-qr.png" alt="GitHub QR Code">
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://okjk.co/T4JBo0" target="_blank" class="social-link">
+                <i class="fas fa-compass"></i>
+                <span>即刻</span>
+                <div class="qr-tooltip">
+                  <img src="/qr/jike-qr.png" alt="即刻 QR Code">
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.xiaohongshu.com/user/profile/5b2bc6dbf7e8b97ff70a63b2" target="_blank" class="social-link">
+                <i class="fas fa-book"></i>
+                <span>小红书</span>
+                <div class="qr-tooltip">
+                  <img src="/qr/xiaohongshu-qr.png" alt="小红书 QR Code">
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://mp.weixin.qq.com/s/Eh8vlal4L02eToTOlaeFww" target="_blank" class="social-link">
+                <i class="fab fa-weixin"></i>
+                <span>公众号</span>
+                <div class="qr-tooltip">
+                  <img src="/qr/wechat-qr.png" alt="公众号 QR Code">
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 大雨@waytoagi. All rights reserved.</p>
       </div>
     </footer>
   </div>
@@ -227,25 +215,28 @@ header {
 }
 
 footer {
-  background-color: #f8f9fa;
-  padding: 20px 0;
+  background-color: #000;
+  padding: 40px 0;
+  color: #fff;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  flex: 1;
 }
 
-.footer-logo img {
-  width: 100px;
-  height: auto;
+.footer-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  max-width: 600px;
 }
 
 .footer-links {
@@ -253,67 +244,62 @@ footer {
   gap: 20px;
 }
 
-.footer-column {
-  flex: 1;
-}
-
-.footer-column h4 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
 .social-list {
   list-style: none;
-}
-
-.social-list li {
-  margin-bottom: 10px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
 }
 
 .social-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #333;
+  position: relative;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
 }
 
-.social-link:hover {
-  color: #0066cc;
+.social-link i {
+  font-size: 24px;
+}
+
+.social-link span {
+  display: none;
 }
 
 .qr-tooltip {
-  position: relative;
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover .qr-tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 .qr-tooltip img {
   width: 100px;
-  height: auto;
+  height: 100px;
+  display: block;
 }
 
 .qr-tooltip p {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  white-space: nowrap;
-  z-index: 10;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.qr-tooltip:hover p {
-  opacity: 1;
+  display: none;
 }
 
 .footer-bottom {
-  margin-top: 20px;
+  margin-top: 40px;
   text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
 }
 
 /* 修改主内容区域背景色 */
