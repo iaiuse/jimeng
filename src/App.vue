@@ -156,6 +156,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -166,51 +168,20 @@ header {
   font-size: 1.4rem;
   color: #333;
   text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 1;
 }
 
 .header-right {
-  display: none;
+  display: block;
 }
 
 .menu-toggle {
-  display: block;
-  width: 30px;
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: #333;
-  position: absolute;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle span:nth-child(1) {
-  top: 0;
-}
-
-.menu-toggle span:nth-child(2) {
-  top: 8px;
-}
-
-.menu-toggle span:nth-child(3) {
-  top: 16px;
-}
-
-.menu-open .menu-toggle span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-open .menu-toggle span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-open .menu-toggle span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  display: none;
 }
 
 .main-nav {
@@ -222,10 +193,17 @@ header {
   color: #333;
   text-decoration: none;
   transition: color 0.2s;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: #f5f5f5;
 }
 
 .nav-link.active {
   font-weight: bold;
+  background-color: #eee;
 }
 
 .handbook-header {
@@ -235,16 +213,17 @@ header {
 .handbook-header h1 {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: #fff;
 }
 
 .handbook-header p {
   font-size: 1.2rem;
-  color: #666;
+  color: #ccc;
 }
 
 .update-info {
   font-size: 0.8rem;
-  color: #999;
+  color: #888;
 }
 
 footer {
@@ -335,5 +314,40 @@ footer {
 .footer-bottom {
   margin-top: 20px;
   text-align: center;
+}
+
+/* 修改主内容区域背景色 */
+.main-content {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+/* 仅在移动端显示菜单按钮 */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .header-right {
+    display: none;
+  }
+  
+  .header-right.menu-open {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 </style> 
