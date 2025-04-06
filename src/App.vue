@@ -3,6 +3,7 @@
     <header>
       <div class="header-container container">
         <a href="#" class="logo">
+          <img src="/vite.svg" alt="Logo" class="logo-img">
           即梦图片3.0
         </a>
         <button class="menu-toggle" @click="toggleMenu">
@@ -137,31 +138,39 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 0 20px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 15px;
-  font-weight: 500;
-  font-size: 1.4rem;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 1.5rem;
   color: #333;
   text-decoration: none;
-  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
+.logo-img {
+  width: 32px;
+  height: 32px;
+}
+
 .logo:hover {
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .header-right {
@@ -201,12 +210,12 @@ header {
 .handbook-header h1 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #fff;
+  color: #333;
 }
 
 .handbook-header p {
   font-size: 1.2rem;
-  color: #ccc;
+  color: #666;
 }
 
 .update-info {
@@ -311,8 +320,8 @@ footer {
 
 /* 修改主内容区域背景色 */
 .main-content {
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   min-height: 100vh;
   padding: 40px 0;
 }
