@@ -15,6 +15,7 @@
              @click="scrollToSection(`feature-${feature.id}`)">
           <div class="nav-item-content">
             <div class="nav-item-title">{{ feature.title }}</div>
+            <div class="nav-item-subtitle">{{ feature.subtitle }}</div>
           </div>
         </div>
       </div>
