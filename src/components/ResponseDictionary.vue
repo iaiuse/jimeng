@@ -138,182 +138,164 @@ const features = [
     description: '当前最受欢迎的响应词，适合快速生成高质量图像',
     items: [
       { 
-        name: '90年代动画', 
-        description: '经典90年代日本动画风格，带有独特的复古画风和色彩处理，突出年代感和怀旧氛围',
-        filename: 'hot/90s-anime.webp',
-        alt: '90年代动画风格'
-      },
-      { 
-        name: '复古写实', 
-        description: '美式复古写实风格，强调自然光影和生活化场景，呈现怀旧氛围和温暖色调',
-        filename: 'hot/american-candid.webp',
-        alt: '美式复古写实'
-      },
-      { 
-        name: '蓝调胶片', 
-        description: '蓝色调为主的胶片效果，营造冷静沉稳的氛围，适合展现城市与人文场景',
-        filename: 'hot/blue-tone.webp',
-        alt: '蓝调胶片风格'
-      },
-      { 
-        name: '朦胧美学', 
-        description: '柔和虚化的艺术效果，通过模糊和光晕创造梦幻般的视觉体验，突出氛围感',
-        filename: 'hot/blur-aesthetic.webp',
-        alt: '朦胧艺术效果'
-      },
-      { 
-        name: '手绘素描', 
-        description: '手绘素描风格的插画效果，强调线条的流畅性和层次感，适合创作艺术插画',
-        filename: 'hot/book-sketch.webp',
-        alt: '手绘素描风格'
-      },
-      { 
-        name: '生活随拍', 
-        description: '自然随性的生活纪实风格，捕捉真实瞬间，呈现日常生活中的温暖与活力',
-        filename: 'hot/candid.webp',
-        alt: '生活随拍风格'
-      },
-      { 
-        name: '冷色调', 
-        description: '以冷色调为主的视觉效果，营造冷静克制的氛围，适合展现都市感和科技感',
-        filename: 'hot/cold-tone.webp',
-        alt: '冷色调效果'
-      },
-      { 
-        name: '可爱卡通', 
-        description: '可爱风格的卡通画效果，强调角色的萌态和画面的趣味性，适合儿童向内容',
-        filename: 'hot/cute-kawaii.webp',
-        alt: '可爱卡通风格'
-      },
-      { 
         name: '胶片闪光', 
-        description: '复古胶片配合闪光灯效果，营造强烈的光影对比，突出主体和戏剧性效果',
+        description: '胶片，闪光灯拍摄，过曝，压暗周围颜色，明影加重',
         filename: 'hot/film-flash.webp',
         alt: '胶片闪光效果'
       },
       { 
-        name: '扁平插画', 
-        description: '现代扁平化插画风格，简约清新的设计语言，适合商业插画和品牌设计',
-        filename: 'hot/flat-illustration.webp',
-        alt: '扁平插画风格'
+        name: '过曝强光', 
+        description: '过曝，强对比，胶片摄影，闪光灯拍摄，极简',
+        filename: 'hot/overexposed-contrast.webp',
+        alt: '过曝强光效果'
       },
       { 
-        name: '高对比度', 
-        description: '强烈的明暗对比效果，突出画面的戏剧性和视觉冲击力，适合创意摄影',
-        filename: 'hot/high-contrast.webp',
-        alt: '高对比度效果'
+        name: '冷色光影', 
+        description: '过曝，冷色调，光影氛围，强对比',
+        filename: 'hot/cold-tone.webp',
+        alt: '冷色光影效果'
       },
       { 
-        name: '冰晶效果', 
-        description: '晶莹剔透的冰晶视觉效果，展现材质的通透感和光线折射，适合产品展示',
-        filename: 'hot/ice-crystal.webp',
-        alt: '冰晶视觉效果'
-      },
-      { 
-        name: 'INS风格', 
-        description: '典型的Instagram摄影风格，注重色调的统一性和画面构图，突出生活美学',
-        filename: 'hot/ins-style.webp',
-        alt: 'Instagram风格'
-      },
-      { 
-        name: '复古网感', 
-        description: '互联网早期的复古设计风格，融合像素感和赛博朋克元素，展现科技感',
-        filename: 'hot/internet-nostalgia.webp',
-        alt: '复古网络风格'
-      },
-      { 
-        name: '可爱清新', 
-        description: '温馨可爱的清新风格，柔和的色调搭配，适合少女向内容和温暖场景',
-        filename: 'hot/kawaii.webp',
-        alt: '可爱清新风格'
+        name: '蓝调胶片', 
+        description: '蓝色调，胶片质感，氛围感，极简',
+        filename: 'hot/blue-tone.webp',
+        alt: '蓝调胶片风格'
       },
       { 
         name: '液态金属', 
-        description: '流动的金属质感效果，展现材质的光泽感和未来感，适合科技主题创作',
+        description: '液态金属',
         filename: 'hot/liquid-metal.webp',
         alt: '液态金属效果'
       },
       { 
-        name: '中国水墨', 
-        description: '传统中国水墨画风格，强调笔触的韵律感和水墨晕染效果，展现东方美学',
-        filename: 'hot/nakada-ikumi.webp',
-        alt: '中国水墨风格'
+        name: '水晶光效', 
+        description: '水晶xx，由冰晶雕琢而成，电影级光线',
+        filename: 'hot/ice-crystal.webp',
+        alt: '水晶光效'
       },
       { 
-        name: '九宫格表情', 
-        description: '多格漫画风格的表情包设计，适合创作有趣的角色表情和情绪展现',
-        filename: 'hot/nine-grid-emoji.webp',
-        alt: '九宫格表情包'
+        name: 'INS风格', 
+        description: 'ins风',
+        filename: 'hot/ins-style.webp',
+        alt: 'INS风格'
       },
       { 
-        name: '复古照片', 
-        description: '老式照片效果，呈现年代感和历史感，适合创作怀旧主题作品',
-        filename: 'hot/old-photo.webp',
-        alt: '复古照片效果'
+        name: '90年代动画', 
+        description: '90s Japanese anime',
+        filename: 'hot/90s-anime.webp',
+        alt: '90年代动画风格'
       },
       { 
-        name: '过曝对比', 
-        description: '强烈的过曝效果配合高对比度，创造独特的光影氛围，突出主题',
-        filename: 'hot/overexposed-contrast.webp',
-        alt: '过曝对比效果'
-      },
-      { 
-        name: '复古漫画', 
-        description: '经典复古漫画风格，强调线条和网点的质感，展现怀旧的艺术效果',
+        name: '古早日漫', 
+        description: '古早日漫风格',
         filename: 'hot/retro-manga.webp',
-        alt: '复古漫画风格'
+        alt: '古早日漫风格'
       },
       { 
-        name: '复古快照', 
-        description: '即时拍摄的复古照片效果，保留胶片相机的独特质感，展现生活记录',
-        filename: 'hot/retro-snapshot.webp',
-        alt: '复古快照效果'
-      },
-      { 
-        name: '复古闪光', 
-        description: '带有闪光效果的复古风格，营造怀旧氛围，适合创作复古主题作品',
-        filename: 'hot/retro-sparkle.webp',
-        alt: '复古闪光效果'
-      },
-      { 
-        name: '少女漫画', 
-        description: '日本少女漫画风格，细腻的人物刻画和情感表现，适合浪漫题材创作',
-        filename: 'hot/shoujo-manga.webp',
-        alt: '少女漫画风格'
+        name: '强对比氛围', 
+        description: '强对比，氛围感',
+        filename: 'hot/high-contrast.webp',
+        alt: '强对比氛围效果'
       },
       { 
         name: '昭和复古', 
-        description: '日本昭和时代的复古风格，展现特定年代的生活氛围和文化特色',
+        description: '昭和复古',
         filename: 'hot/showa-retro.webp',
         alt: '昭和复古风格'
       },
       { 
-        name: '欧式复古', 
-        description: '欧洲古典艺术风格，强调光影和构图的戏剧性，展现优雅复古的氛围',
-        filename: 'hot/vintage-europea...ok.webp',
-        alt: '欧式复古风格'
-      },
-      { 
-        name: '复古童书', 
-        description: '老式儿童书籍插画风格，温暖细腻的手绘效果，适合儿童主题创作',
-        filename: 'hot/vintage-kids-book.webp',
-        alt: '复古童书风格'
-      },
-      { 
-        name: '鲜艳胶片', 
-        description: '色彩鲜明的胶片效果，突出画面的色彩饱和度，营造活力氛围',
+        name: '生命力', 
+        description: '生命力，高饱和度，高对比，胶片',
         filename: 'hot/vivid-film.webp',
-        alt: '鲜艳胶片效果'
+        alt: '生命力效果'
       },
       { 
-        name: 'X光片', 
-        description: 'X光片风格的视觉效果，展现物体的内部结构，创造独特的艺术效果',
-        filename: 'hot/x-ray.webp',
-        alt: 'X光片效果'
+        name: '抓拍', 
+        description: '抓拍',
+        filename: 'hot/candid.webp',
+        alt: '抓拍效果'
+      },
+      { 
+        name: '复古胶片', 
+        description: '老照片，胶片感，褪色，低饱和度',
+        filename: 'hot/vintage-europea...ok.webp',
+        alt: '复古胶片效果'
+      },
+      { 
+        name: '舞蹈美学', 
+        description: '拍摄模糊 失焦美学',
+        filename: 'hot/blur-aesthetic.webp',
+        alt: '舞蹈美学效果'
+      },
+      { 
+        name: '复古快照', 
+        description: 'Retro Snapshot',
+        filename: 'hot/retro-snapshot.webp',
+        alt: '复古快照效果'
+      },
+      { 
+        name: '美式复古', 
+        description: '美式复古儿童书籍',
+        filename: 'hot/american-candid.webp',
+        alt: '美式复古风格'
+      },
+      { 
+        name: '可爱萌系', 
+        description: '可爱萌系',
+        filename: 'hot/cute-kawaii.webp',
+        alt: '可爱萌系风格'
+      },
+      { 
+        name: '少女漫画', 
+        description: '少女漫画',
+        filename: 'hot/shoujo-manga.webp',
+        alt: '少女漫画风格'
+      },
+      { 
+        name: '水墨画风', 
+        description: 'Nakada Ikumi',
+        filename: 'hot/nakada-ikumi.webp',
+        alt: '水墨画风格'
+      },
+      { 
+        name: '欧美绘本', 
+        description: '老式绘本 欧美绘本',
+        filename: 'hot/vintage-kids-book.webp',
+        alt: '欧美绘本风格'
+      },
+      { 
+        name: '扁平插画', 
+        description: '高饱和度，扁平画面风格，粗线条',
+        filename: 'hot/flat-illustration.webp',
+        alt: '扁平插画风格'
+      },
+      { 
+        name: '复古网感', 
+        description: '互联网怀旧风',
+        filename: 'hot/internet-nostalgia.webp',
+        alt: '复古网感风格'
+      },
+      { 
+        name: '复古亮闪', 
+        description: '复古亮闪闪',
+        filename: 'hot/retro-sparkle.webp',
+        alt: '复古亮闪效果'
+      },
+      { 
+        name: '九宫格表情', 
+        description: '九宫格表情包',
+        filename: 'hot/nine-grid-emoji.webp',
+        alt: '九宫格表情包'
+      },
+      { 
+        name: '手绘漫画', 
+        description: '绘本手稿风',
+        filename: 'hot/book-sketch.webp',
+        alt: '手绘漫画风格'
       },
       { 
         name: '四格漫画', 
-        description: '日本四格漫画风格，简洁有趣的故事表现形式，适合创作短篇漫画',
+        description: '古早四格漫画风',
         filename: 'hot/yonkoma-manga.webp',
         alt: '四格漫画风格'
       }
