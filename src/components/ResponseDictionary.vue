@@ -697,43 +697,943 @@ const features = [
   {
     id: 3,
     title: '潮流风格',
-    description: '当前流行的艺术和设计风格，适合紧跟潮流创作',
+    description: '当前流行的艺术和插画风格，适合创作不同类型的视觉作品',
     items: [
       { 
+        name: '绘本风格', 
+        description: '温暖可爱的儿童绘本风格，柔和的色彩和简单的造型设计',
+        filename: 'trend/image001.webp',
+        alt: '绘本风格'
+      },
+      { 
+        name: '古风插画', 
+        description: '传统东方美学的现代演绎，优雅细腻的线条和意境表现',
+        filename: 'trend/image002.webp',
+        alt: '古风插画风格'
+      },
+      { 
+        name: 'lo-fi插画', 
+        description: '慵懒随性的生活日常风格，温柔细腻的氛围表现',
+        filename: 'trend/image003.webp',
+        alt: 'lo-fi插画风格'
+      },
+      { 
+        name: '宫崎骏动漫风格', 
+        description: '充满诗意和想象力的动画风格，自然与人文的和谐表现',
+        filename: 'trend/image004.webp',
+        alt: '宫崎骏动漫风格'
+      },
+      { 
+        name: '日漫风格', 
+        description: '典型的日本动漫画风，精致的人物设计和场景表现',
+        filename: 'trend/image005.webp',
+        alt: '日漫风格'
+      },
+      { 
+        name: '赛璐璐风格', 
+        description: '经典动画片的视觉风格，清新明快的色彩和造型',
+        filename: 'trend/image006.webp',
+        alt: '赛璐璐风格'
+      },
+      { 
+        name: '儿童画', 
+        description: '天真烂漫的儿童画风格，充满童趣和想象力',
+        filename: 'trend/image007.webp',
+        alt: '儿童画风格'
+      },
+      { 
+        name: '2D Cartoon Animation', 
+        description: '现代2D卡通动画风格，活泼生动的角色设计',
+        filename: 'trend/image008.webp',
+        alt: '2D卡通动画风格'
+      },
+      { 
+        name: '欧美动画', 
+        description: '欧美主流动画风格，富有表现力的角色设计',
+        filename: 'trend/image009.webp',
+        alt: '欧美动画风格'
+      },
+      { 
+        name: 'Character design', 
+        description: '专业的角色设计风格，注重人物个性和细节表现',
+        filename: 'trend/image010.webp',
+        alt: '角色设计风格'
+      },
+      { 
+        name: 'chibi', 
+        description: 'Q版可爱的迷你角色风格，夸张有趣的造型设计',
+        filename: 'trend/image011.webp',
+        alt: 'Q版角色风格'
+      },
+      { 
+        name: '2D动画风格', 
+        description: '现代2D动画制作风格，流畅的线条和动态表现',
+        filename: 'trend/image012.webp',
+        alt: '2D动画风格'
+      },
+      { 
+        name: 'Riso', 
+        description: '独特的印刷艺术风格，粗糙质感和色彩叠加效果',
+        filename: 'trend/image013.webp',
+        alt: 'Riso印刷风格'
+      },
+      { 
+        name: '渐变风格', 
+        description: '现代渐变设计风格，柔和的色彩过渡和氛围营造',
+        filename: 'trend/image014.webp',
+        alt: '渐变设计风格'
+      },
+      { 
+        name: '国漫风格', 
+        description: '中国动画的艺术风格，融合传统与现代的视觉表现',
+        filename: 'trend/image015.webp',
+        alt: '国漫风格'
+      },
+      { 
+        name: 'pixel', 
+        description: '像素艺术风格，复古游戏视觉的现代演绎',
+        filename: 'trend/image016.webp',
+        alt: '像素艺术风格'
+      },
+      { 
+        name: '我的世界风格', 
+        description: '独特的游戏场景风格，梦幻般的色彩和光效',
+        filename: 'trend/image017.webp',
+        alt: '我的世界风格'
+      },
+      { 
+        name: '中国风', 
+        description: '传统中国艺术的现代诠释，水墨意境的优雅表现',
+        filename: 'trend/image018.webp',
+        alt: '中国风格'
+      },
+      { 
+        name: '3D卡通', 
+        description: '现代3D动画风格，立体感强的角色和场景设计',
+        filename: 'trend/image019.webp',
+        alt: '3D卡通风格'
+      },
+      { 
+        name: '定格动画风格', 
+        description: '独特的定格动画效果，精细的模型和材质表现',
+        filename: 'trend/image020.webp',
+        alt: '定格动画风格'
+      },
+      { 
+        name: '90年代游戏', 
+        description: '复古游戏视觉风格，像素化的画面和氛围营造',
+        filename: 'trend/image021.webp',
+        alt: '90年代游戏风格'
+      },
+      { 
+        name: 'voxel art style', 
+        description: '体素艺术风格，方块化的3D视觉效果',
+        filename: 'trend/image022.webp',
+        alt: '体素艺术风格'
+      },
+      { 
+        name: '盲盒风格', 
+        description: '潮玩玩具设计风格，可爱简约的角色造型',
+        filename: 'trend/image023.webp',
+        alt: '盲盒风格'
+      },
+      { 
+        name: 'low poly', 
+        description: '低面数3D风格，几何化的造型和现代感表现',
+        filename: 'trend/image024.webp',
+        alt: 'low poly风格'
+      },
+      { 
+        name: '美漫风格', 
+        description: '美式漫画风格，夸张的动作和强烈的视觉冲击',
+        filename: 'trend/image025.webp',
+        alt: '美漫风格'
+      },
+      { 
+        name: '皮克斯动画风格', 
+        description: 'Pixar动画风格，温暖细腻的情感表达',
+        filename: 'trend/image026.webp',
+        alt: '皮克斯动画风格'
+      },
+      { 
+        name: '3D cartoon', 
+        description: '现代3D卡通风格，活泼可爱的角色设计',
+        filename: 'trend/image027.webp',
+        alt: '3D卡通风格'
+      },
+      { 
+        name: '厚涂风格', 
+        description: '浓重的笔触和色彩，富有质感的绘画效果',
+        filename: 'trend/image028.webp',
+        alt: '厚涂风格'
+      },
+      { 
+        name: '半厚涂风格', 
+        description: '介于写实和厚涂之间的绘画风格，细腻的明暗过渡',
+        filename: 'trend/image029.webp',
+        alt: '半厚涂风格'
+      },
+      { 
+        name: '奇幻风', 
+        description: '奇幻题材的视觉风格，魔法和幻想元素的展现',
+        filename: 'trend/image030.webp',
+        alt: '奇幻风格'
+      },
+      { 
+        name: 'Ancient China Illustration', 
+        description: '中国古代场景插画，传统建筑和人文元素的表现',
+        filename: 'trend/image031.webp',
+        alt: '中国古代插画'
+      },
+      { 
+        name: '新艺术派风格', 
+        description: '新艺术运动风格，优雅流畅的线条和装饰图案',
+        filename: 'trend/image032.webp',
+        alt: '新艺术派风格'
+      },
+      { 
+        name: '言情小说', 
+        description: '言情小说插画风格，浪漫唯美的氛围营造',
+        filename: 'trend/image033.webp',
+        alt: '言情小说风格'
+      },
+      { 
+        name: 'Barbie style', 
+        description: '芭比娃娃风格，明亮活泼的色彩和时尚元素',
+        filename: 'trend/image034.webp',
+        alt: '芭比风格'
+      },
+      { 
+        name: '概念艺术', 
+        description: '游戏和电影概念设计，宏大场景和氛围的构建',
+        filename: 'trend/image035.webp',
+        alt: '概念艺术风格'
+      },
+      { 
+        name: '奇幻风', 
+        description: '奇幻世界的视觉呈现，神秘梦幻的场景设计',
+        filename: 'trend/image036.webp',
+        alt: '奇幻风格'
+      },
+      { 
+        name: '池核', 
+        description: '后现代审美的游泳池场景，独特的氛围营造',
+        filename: 'trend/image037.webp',
+        alt: '池核风格'
+      },
+      { 
+        name: '怪核', 
+        description: '怪诞风格的视觉表现，超现实的场景设计',
+        filename: 'trend/image038.webp',
+        alt: '怪核风格'
+      },
+      { 
+        name: '分子化', 
+        description: '分子结构的视觉效果，科技感的图形设计',
+        filename: 'trend/image039.webp',
+        alt: '分子化风格'
+      },
+      { 
+        name: '工业设计风', 
+        description: '工业产品设计风格，简洁现代的造型语言',
+        filename: 'trend/image040.webp',
+        alt: '工业设计风格'
+      },
+      { 
+        name: '侘寂风', 
+        description: '日本侘寂美学，简约质朴的空间设计',
+        filename: 'trend/image041.webp',
+        alt: '侘寂风格'
+      },
+      { 
+        name: '中式恐怖', 
+        description: '中国传统元素的恐怖风格，阴森诡异的氛围',
+        filename: 'trend/image042.webp',
+        alt: '中式恐怖风格'
+      },
+      { 
+        name: '视错觉', 
+        description: '视觉错觉艺术，令人惊叹的空间错觉效果',
+        filename: 'trend/image043.webp',
+        alt: '视错觉风格'
+      },
+      { 
+        name: '日系风', 
+        description: '日本摄影风格，柔和自然的光线效果',
+        filename: 'trend/image044.webp',
+        alt: '日系风格'
+      },
+      { 
+        name: '拍摄模糊 失焦美学', 
+        description: '艺术性的模糊效果，朦胧梦幻的视觉表现',
+        filename: 'trend/image045.webp',
+        alt: '失焦美学风格'
+      },
+      { 
+        name: 'Out-of-Focus Aesthetic', 
+        description: '失焦摄影美学，柔和朦胧的艺术效果',
+        filename: 'trend/image046.webp',
+        alt: '失焦美学风格'
+      },
+      { 
+        name: '渐变美学', 
+        description: '渐变色彩的艺术表现，优雅流畅的色彩过渡',
+        filename: 'trend/image047.webp',
+        alt: '渐变美学风格'
+      },
+      { 
+        name: '宝利来', 
+        description: '宝丽来相机风格，复古怀旧的照片效果',
+        filename: 'trend/image048.webp',
+        alt: '宝利来风格'
+      },
+      { 
+        name: 'Atmospheric Vibe', 
+        description: '氛围感摄影，营造特定情绪的视觉效果',
+        filename: 'trend/image049.webp',
+        alt: '氛围感风格'
+      },
+      { 
+        name: '中式梦核', 
+        description: '中国传统元素的梦幻演绎，朦胧意境的表现',
+        filename: 'trend/image050.webp',
+        alt: '中式梦核风格'
+      },
+      { 
+        name: '禅意新中式', 
+        description: '现代禅意美学，简约淡雅的东方韵味',
+        filename: 'trend/image051.webp',
+        alt: '禅意新中式风格'
+      },
+      { 
+        name: 'Zen-inspired New Chinese Style', 
+        description: '禅意启发的新中式设计，现代与传统的融合',
+        filename: 'trend/image052.webp',
+        alt: '禅意新中式风格'
+      },
+      { 
+        name: '清冷感', 
+        description: '冷色调的视觉风格，清冷疏离的情绪表达',
+        filename: 'trend/image053.webp',
+        alt: '清冷感风格'
+      },
+      { 
+        name: 'Cool and Detached', 
+        description: '冷静疏离的视觉风格，理性克制的设计语言',
+        filename: 'trend/image054.webp',
+        alt: '冷静疏离风格'
+      },
+      { 
+        name: '野性美', 
+        description: '自然野性的视觉风格，粗犷自由的表现手法',
+        filename: 'trend/image055.webp',
+        alt: '野性美风格'
+      },
+      { 
+        name: '民国风', 
+        description: '民国时期的复古风格，典雅含蓄的艺术表现',
+        filename: 'trend/image056.webp',
+        alt: '民国风格'
+      },
+      { 
+        name: '老钱风', 
+        description: '复古奢华风格，典雅精致的视觉效果',
+        filename: 'trend/image057.webp',
+        alt: '老钱风格'
+      },
+      { 
+        name: '森系', 
+        description: '自然森林系风格，清新自然的氛围营造',
+        filename: 'trend/image058.webp',
+        alt: '森系风格'
+      },
+      { 
+        name: '欧美杂志封面插画', 
+        description: '欧美杂志风格的插画设计，时尚现代的视觉表现',
+        filename: 'trend/image059.webp',
+        alt: '欧美杂志插画风格'
+      },
+      { 
+        name: '拼贴风', 
+        description: '艺术拼贴风格，多元素组合的创意表现',
+        filename: 'trend/image060.webp',
+        alt: '拼贴风格'
+      },
+      { 
+        name: '小清新', 
+        description: '清新淡雅的视觉风格，温柔细腻的情感表达',
+        filename: 'trend/image061.webp',
+        alt: '小清新风格'
+      },
+      { 
+        name: 'Springtime Aesthetic', 
+        description: '春日氛围的视觉美学，明媚温暖的季节表现',
+        filename: 'trend/image062.webp',
+        alt: '春日美学风格'
+      },
+      { 
+        name: '生命力摄影', 
+        description: '充满活力的摄影风格，捕捉生命力量的瞬间',
+        filename: 'trend/image063.webp',
+        alt: '生命力摄影风格'
+      },
+      { 
+        name: '蜜桃系', 
+        description: '粉嫩甜美的视觉风格，温柔可爱的色彩搭配',
+        filename: 'trend/image064.webp',
+        alt: '蜜桃系风格'
+      },
+      { 
+        name: '奶平平', 
+        description: '奶油般柔和的色调，温暖舒适的视觉效果',
+        filename: 'trend/image065.webp',
+        alt: '奶平平风格'
+      },
+      { 
+        name: '糯叽叽', 
+        description: '柔软细腻的视觉效果，温暖治愈的风格表现',
+        filename: 'trend/image066.webp',
+        alt: '糯叽叽风格'
+      },
+      { 
+        name: '渐变美学', 
+        description: '渐变色彩的艺术表现，柔和流畅的视觉效果',
+        filename: 'trend/image067.webp',
+        alt: '渐变美学风格'
+      },
+      { 
+        name: '宝利来', 
+        description: '复古宝丽来相机效果，怀旧温暖的影像风格',
+        filename: 'trend/image068.webp',
+        alt: '宝利来风格'
+      },
+      { 
+        name: 'Out-of-Focus Aesthetic', 
+        description: '艺术性失焦效果，朦胧梦幻的视觉表现',
+        filename: 'trend/image069.webp',
+        alt: '失焦美学风格'
+      },
+      { 
+        name: '果冻系', 
+        description: '透明清新的视觉效果，晶莹剔透的质感表现',
+        filename: 'trend/image070.webp',
+        alt: '果冻系风格'
+      },
+      { 
+        name: '甜酷辣妹风', 
+        description: '潮流街头风格，甜美与酷炫的混搭效果',
+        filename: 'trend/image071.webp',
+        alt: '甜酷辣妹风格'
+      },
+      { 
+        name: '复古风', 
+        description: '怀旧复古风格，经典年代感的艺术表现',
+        filename: 'trend/image072.webp',
+        alt: '复古风格'
+      },
+      { 
+        name: '小清新', 
+        description: '清新淡雅的视觉风格，温柔细腻的情感表达',
+        filename: 'trend/image073.webp',
+        alt: '小清新风格'
+      },
+      { 
+        name: 'Springtime Aesthetic', 
+        description: '春日氛围的视觉美学，明媚温暖的季节表现',
+        filename: 'trend/image074.webp',
+        alt: '春日美学风格'
+      },
+      { 
+        name: '生命力摄影', 
+        description: '充满活力的摄影风格，捕捉生命力量的瞬间',
+        filename: 'trend/image075.webp',
+        alt: '生命力摄影风格'
+      },
+      { 
+        name: '蜜桃系', 
+        description: '粉嫩甜美的视觉风格，温柔可爱的色彩搭配',
+        filename: 'trend/image076.webp',
+        alt: '蜜桃系风格'
+      },
+      { 
+        name: '奶平平', 
+        description: '奶油般柔和的色调，温暖舒适的视觉效果',
+        filename: 'trend/image077.webp',
+        alt: '奶平平风格'
+      },
+      { 
+        name: '糯叽叽', 
+        description: '柔软细腻的视觉效果，温暖治愈的风格表现',
+        filename: 'trend/image078.webp',
+        alt: '糯叽叽风格'
+      },
+      { 
+        name: '渐变美学', 
+        description: '渐变色彩的艺术表现，柔和流畅的视觉效果',
+        filename: 'trend/image079.webp',
+        alt: '渐变美学风格'
+      },
+      { 
+        name: '宝利来', 
+        description: '复古宝丽来相机效果，怀旧温暖的影像风格',
+        filename: 'trend/image080.webp',
+        alt: '宝利来风格'
+      },
+      { 
+        name: 'Out-of-Focus Aesthetic', 
+        description: '艺术性失焦效果，朦胧梦幻的视觉表现',
+        filename: 'trend/image081.webp',
+        alt: '失焦美学风格'
+      },
+      { 
+        name: '果冻系', 
+        description: '透明清新的视觉效果，晶莹剔透的质感表现',
+        filename: 'trend/image082.webp',
+        alt: '果冻系风格'
+      },
+      { 
+        name: '甜酷辣妹风', 
+        description: '潮流街头风格，甜美与酷炫的混搭效果',
+        filename: 'trend/image083.webp',
+        alt: '甜酷辣妹风格'
+      },
+      { 
+        name: '复古风', 
+        description: '怀旧复古风格，经典年代感的艺术表现',
+        filename: 'trend/image084.webp',
+        alt: '复古风格'
+      },
+      { 
+        name: '电影感', 
+        description: '电影级别的视觉效果，富有故事性的画面表现',
+        filename: 'trend/image085.webp',
+        alt: '电影感风格'
+      },
+      { 
         name: '赛博朋克', 
-        description: '未来科技与复古元素的碰撞',
-        filename: 'trend/cyberpunk.webp',
+        description: '未来科技与复古元素的碰撞，霓虹与金属的视觉冲击',
+        filename: 'trend/image086.webp',
         alt: '赛博朋克风格'
       },
       { 
-        name: '蒸汽朋克', 
-        description: '维多利亚时代与蒸汽机械的融合',
-        filename: 'trend/steampunk.webp',
-        alt: '蒸汽朋克风格'
+        name: '蒸汽波', 
+        description: '复古未来主义风格，怀旧与科技的混搭美学',
+        filename: 'trend/image087.webp',
+        alt: '蒸汽波风格'
       },
       { 
         name: '极简主义', 
-        description: '简约至上的设计理念',
-        filename: 'trend/minimalism.webp',
-        alt: '极简主义'
+        description: '简约至上的设计理念，纯粹的形式美感',
+        filename: 'trend/image088.webp',
+        alt: '极简主义风格'
       },
       { 
-        name: '波普艺术', 
-        description: '流行文化与艺术的结合',
-        filename: 'trend/pop.webp',
-        alt: '波普艺术'
-      },
-      { 
-        name: '新艺术', 
-        description: '自然与装饰艺术的融合',
-        filename: 'trend/art-nouveau.webp',
-        alt: '新艺术风格'
+        name: '未来主义', 
+        description: '面向未来的设计风格，科技感与动态美学的结合',
+        filename: 'trend/image089.webp',
+        alt: '未来主义风格'
       },
       { 
         name: '后现代', 
-        description: '打破传统，追求创新',
-        filename: 'trend/postmodern.webp',
+        description: '打破传统的设计语言，混搭与解构的艺术表现',
+        filename: 'trend/image090.webp',
         alt: '后现代风格'
+      },
+      { 
+        name: '新浪漫主义', 
+        description: '当代浪漫主义风格，情感与美学的深度表达',
+        filename: 'trend/image091.webp',
+        alt: '新浪漫主义风格'
+      },
+      { 
+        name: '超现实主义', 
+        description: '打破现实逻辑的艺术风格，梦境与现实的交织',
+        filename: 'trend/image092.webp',
+        alt: '超现实主义风格'
+      },
+      { 
+        name: '波普艺术', 
+        description: '流行文化艺术风格，大胆鲜艳的色彩表现',
+        filename: 'trend/image093.webp',
+        alt: '波普艺术风格'
+      },
+      { 
+        name: '新表现主义', 
+        description: '强烈个人情感表达的艺术风格，自由奔放的创作手法',
+        filename: 'trend/image094.webp',
+        alt: '新表现主义风格'
+      },
+      { 
+        name: '解构主义', 
+        description: '打破常规结构的设计风格，重组与创新的视觉效果',
+        filename: 'trend/image095.webp',
+        alt: '解构主义风格'
+      },
+      { 
+        name: '新古典主义', 
+        description: '传统与现代的融合，优雅庄重的艺术表现',
+        filename: 'trend/image096.webp',
+        alt: '新古典主义风格'
+      },
+      { 
+        name: '工业风', 
+        description: '工业元素的艺术化表现，粗犷与精致的平衡',
+        filename: 'trend/image097.webp',
+        alt: '工业风格'
+      },
+      { 
+        name: '生态艺术', 
+        description: '自然与环保主题的艺术表现，生态与美学的结合',
+        filename: 'trend/image098.webp',
+        alt: '生态艺术风格'
+      },
+      { 
+        name: '数字艺术', 
+        description: '数字技术创作的艺术形式，科技与创意的完美融合',
+        filename: 'trend/image099.webp',
+        alt: '数字艺术风格'
+      },
+      { 
+        name: '新媒体艺术', 
+        description: '多媒体技术的艺术表现，交互与创新的视觉体验',
+        filename: 'trend/image100.webp',
+        alt: '新媒体艺术风格'
+      },
+      { 
+        name: '装置艺术', 
+        description: '空间与物件的艺术组合，概念与形式的创意表达',
+        filename: 'trend/image101.webp',
+        alt: '装置艺术风格'
+      },
+      { 
+        name: '街头艺术', 
+        description: '城市文化的艺术表现，自由不羁的创作风格',
+        filename: 'trend/image102.webp',
+        alt: '街头艺术风格'
+      },
+      { 
+        name: '光影艺术', 
+        description: '光与影的艺术效果，氛围与情感的视觉营造',
+        filename: 'trend/image103.webp',
+        alt: '光影艺术风格'
+      },
+      { 
+        name: '几何艺术', 
+        description: '几何形态的艺术表现，规律与变化的视觉美感',
+        filename: 'trend/image104.webp',
+        alt: '几何艺术风格'
+      },
+      { 
+        name: '有机艺术', 
+        description: '自然有机形态的艺术表现，流动与生长的视觉效果',
+        filename: 'trend/image105.webp',
+        alt: '有机艺术风格'
+      },
+      { 
+        name: '纹理艺术', 
+        description: '材质纹理的艺术表现，触感与视觉的双重体验',
+        filename: 'trend/image106.webp',
+        alt: '纹理艺术风格'
+      },
+      { 
+        name: '抽象艺术', 
+        description: '非具象的艺术表现，形式与情感的纯粹表达',
+        filename: 'trend/image107.webp',
+        alt: '抽象艺术风格'
+      },
+      { 
+        name: '观念艺术', 
+        description: '概念与思想的艺术表达，理念与形式的统一',
+        filename: 'trend/image108.webp',
+        alt: '观念艺术风格'
+      },
+      { 
+        name: '环境艺术', 
+        description: '空间环境的艺术设计，场域与体验的整体营造',
+        filename: 'trend/image109.webp',
+        alt: '环境艺术风格'
+      },
+      { 
+        name: '声音艺术', 
+        description: '听觉与视觉的艺术结合，多感官的艺术体验',
+        filename: 'trend/image110.webp',
+        alt: '声音艺术风格'
+      },
+      { 
+        name: '互动艺术', 
+        description: '观众参与的艺术形式，互动与体验的创意表达',
+        filename: 'trend/image111.webp',
+        alt: '互动艺术风格'
+      },
+      { 
+        name: '混合媒材', 
+        description: '多种材料的艺术组合，材质与技法的创新表现',
+        filename: 'trend/image112.webp',
+        alt: '混合媒材风格'
+      },
+      { 
+        name: '实验艺术', 
+        description: '创新探索的艺术形式，突破与实验的创作精神',
+        filename: 'trend/image113.webp',
+        alt: '实验艺术风格'
+      },
+      { 
+        name: '科技艺术', 
+        description: '科技与艺术的融合，创新与美学的结合表达',
+        filename: 'trend/image114.webp',
+        alt: '科技艺术风格'
+      },
+      { 
+        name: '生物艺术', 
+        description: '生命科学与艺术的结合，自然与创造的艺术表现',
+        filename: 'trend/image115.webp',
+        alt: '生物艺术风格'
+      },
+      { 
+        name: '数据艺术', 
+        description: '数据可视化的艺术表现，信息与美学的创意呈现',
+        filename: 'trend/image116.webp',
+        alt: '数据艺术风格'
+      },
+      { 
+        name: '网络艺术', 
+        description: '互联网文化的艺术表现，虚拟与现实的创意融合',
+        filename: 'trend/image117.webp',
+        alt: '网络艺术风格'
+      },
+      { 
+        name: '游戏艺术', 
+        description: '游戏文化的艺术表现，互动与娱乐的创意设计',
+        filename: 'trend/image118.webp',
+        alt: '游戏艺术风格'
+      },
+      { 
+        name: '时尚艺术', 
+        description: '时尚文化的艺术表现，潮流与美学的创意融合',
+        filename: 'trend/image119.webp',
+        alt: '时尚艺术风格'
+      },
+      { 
+        name: '建筑艺术', 
+        description: '建筑空间的艺术表现，结构与美学的完美统一',
+        filename: 'trend/image120.webp',
+        alt: '建筑艺术风格'
+      },
+      { 
+        name: '舞台艺术', 
+        description: '表演空间的艺术设计，戏剧与视觉的创意呈现',
+        filename: 'trend/image121.webp',
+        alt: '舞台艺术风格'
+      },
+      { 
+        name: '展览艺术', 
+        description: '展示空间的艺术策划，陈列与体验的整体设计',
+        filename: 'trend/image122.webp',
+        alt: '展览艺术风格'
+      },
+      { 
+        name: '商业艺术', 
+        description: '商业创意的艺术表现，营销与美学的策略结合',
+        filename: 'trend/image123.webp',
+        alt: '商业艺术风格'
+      },
+      { 
+        name: '公共艺术', 
+        description: '城市空间的艺术创作，环境与人文的和谐统一',
+        filename: 'trend/image124.webp',
+        alt: '公共艺术风格'
+      },
+      { 
+        name: '民俗艺术', 
+        description: '传统文化的艺术表现，民间智慧的创意传承',
+        filename: 'trend/image125.webp',
+        alt: '民俗艺术风格'
+      },
+      { 
+        name: '手工艺术', 
+        description: '手工制作的艺术表现，工艺与创意的完美结合',
+        filename: 'trend/image126.webp',
+        alt: '手工艺术风格'
+      },
+      { 
+        name: '文字艺术', 
+        description: 'typography艺术表现，字体与设计的创意融合',
+        filename: 'trend/image127.webp',
+        alt: '文字艺术风格'
+      },
+      { 
+        name: '图案艺术', 
+        description: '重复图案的艺术设计，规律与变化的视觉韵律',
+        filename: 'trend/image128.webp',
+        alt: '图案艺术风格'
+      },
+      { 
+        name: '符号艺术', 
+        description: '视觉符号的艺术创作，象征与意义的创意表达',
+        filename: 'trend/image129.webp',
+        alt: '符号艺术风格'
+      },
+      { 
+        name: '空间艺术', 
+        description: '三维空间的艺术设计，立体与平面的创意构成',
+        filename: 'trend/image130.webp',
+        alt: '空间艺术风格'
+      },
+      { 
+        name: '光线艺术', 
+        description: '光影效果的艺术表现，明暗与色彩的视觉体验',
+        filename: 'trend/image131.webp',
+        alt: '光线艺术风格'
+      },
+      { 
+        name: '动态艺术', 
+        description: '运动效果的艺术表现，时间与空间的创意演绎',
+        filename: 'trend/image132.webp',
+        alt: '动态艺术风格'
+      },
+      { 
+        name: '静物艺术', 
+        description: '物件构图的艺术表现，质感与光影的细致刻画',
+        filename: 'trend/image133.webp',
+        alt: '静物艺术风格'
+      },
+      { 
+        name: '人像艺术', 
+        description: '人物形象的艺术表现，个性与情感的深入刻画',
+        filename: 'trend/image134.webp',
+        alt: '人像艺术风格'
+      },
+      { 
+        name: '风景艺术', 
+        description: '自然景观的艺术表现，空间与氛围的完美营造',
+        filename: 'trend/image135.webp',
+        alt: '风景艺术风格'
+      },
+      { 
+        name: '城市艺术', 
+        description: '都市景观的艺术表现，现代与人文的视觉记录',
+        filename: 'trend/image136.webp',
+        alt: '城市艺术风格'
+      },
+      { 
+        name: '水墨艺术', 
+        description: '东方水墨的艺术表现，传统与创新的美学融合',
+        filename: 'trend/image137.webp',
+        alt: '水墨艺术风格'
+      },
+      { 
+        name: '油画艺术', 
+        description: '西方油画的艺术表现，色彩与肌理的细腻处理',
+        filename: 'trend/image138.webp',
+        alt: '油画艺术风格'
+      },
+      { 
+        name: '版画艺术', 
+        description: '印刷艺术的创作表现，技法与创意的独特魅力',
+        filename: 'trend/image139.webp',
+        alt: '版画艺术风格'
+      },
+      { 
+        name: '雕塑艺术', 
+        description: '立体造型的艺术表现，形态与空间的三维创作',
+        filename: 'trend/image140.webp',
+        alt: '雕塑艺术风格'
+      },
+      { 
+        name: '陶艺', 
+        description: '陶瓷创作的艺术表现，材质与工艺的完美结合',
+        filename: 'trend/image141.webp',
+        alt: '陶艺风格'
+      },
+      { 
+        name: '玻璃艺术', 
+        description: '玻璃材质的艺术表现，透明与光影的视觉效果',
+        filename: 'trend/image142.webp',
+        alt: '玻璃艺术风格'
+      },
+      { 
+        name: '金属艺术', 
+        description: '金属材质的艺术表现，质感与造型的工艺创作',
+        filename: 'trend/image143.webp',
+        alt: '金属艺术风格'
+      },
+      { 
+        name: '织物艺术', 
+        description: '纺织品的艺术表现，材质与图案的创意设计',
+        filename: 'trend/image144.webp',
+        alt: '织物艺术风格'
+      },
+      { 
+        name: 'American retro style', 
+        description: '美式复古风格，50-60年代美国流行文化的视觉表现',
+        filename: 'trend/image145.webp',
+        alt: '美式复古风格'
+      },
+      { 
+        name: '波西米亚风', 
+        description: '自由波西米亚风格，民族与艺术的混搭美学',
+        filename: 'trend/image146.webp',
+        alt: '波西米亚风格'
+      },
+      { 
+        name: '像素风，宫崎骏', 
+        description: '宫崎骏动画风格的像素艺术演绎',
+        filename: 'trend/image147.webp',
+        alt: '像素宫崎骏风格'
+      },
+      { 
+        name: '京剧风格', 
+        description: '中国京剧艺术的现代演绎，戏曲元素的创新表达',
+        filename: 'trend/image148.webp',
+        alt: '京剧风格'
+      },
+      { 
+        name: '乐高风格', 
+        description: '乐高积木的视觉风格，趣味性与创意性的结合',
+        filename: 'trend/image149.webp',
+        alt: '乐高风格'
+      },
+      { 
+        name: 'Lowbrow art', 
+        description: '低俗艺术风格，街头文化与波普艺术的融合',
+        filename: 'trend/image150.webp',
+        alt: 'Lowbrow艺术风格'
+      },
+      { 
+        name: '轻酸性设计，扁平渐变风格', 
+        description: '清新简约的设计风格，柔和的色彩过渡效果',
+        filename: 'trend/image151.webp',
+        alt: '轻酸性设计风格'
+      },
+      { 
+        name: '手机壁纸', 
+        description: '适合移动设备的壁纸设计，简约现代的视觉效果',
+        filename: 'trend/image152.webp',
+        alt: '手机壁纸风格'
+      },
+      { 
+        name: 'riso印刷，粗线条', 
+        description: 'Risograph印刷效果，粗犷线条的艺术表现',
+        filename: 'trend/image153.webp',
+        alt: 'riso印刷风格'
+      },
+      { 
+        name: 'flat style', 
+        description: '扁平化设计风格，简约清晰的视觉语言',
+        filename: 'trend/image154.webp',
+        alt: '扁平设计风格'
+      },
+      { 
+        name: '爆炸效果', 
+        description: '动态爆炸效果，强烈视觉冲击的艺术表现',
+        filename: 'trend/image155.webp',
+        alt: '爆炸效果风格'
+      },
+      { 
+        name: '丁丁历险记', 
+        description: '经典漫画丁丁历险记的艺术风格，清晰明快的线条表现',
+        filename: 'trend/image156.webp',
+        alt: '丁丁历险记风格'
       }
     ]
   },
