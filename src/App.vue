@@ -34,6 +34,11 @@
           <h1>即梦图片3.0模型 提示词攻略手册</h1>
           <p>探索新一代AI图像生成模型，实现真实、高清、专业的视觉创作</p>
           <div class="update-info">最新更新时间: 2025年4月1日</div>
+          <div class="feedback-link">
+            <a href="https://github.com/iaiuse/jimeng/issues/new" target="_blank" rel="noopener noreferrer">
+              有意见或想法？欢迎提交反馈 →
+            </a>
+          </div>
         </div>
 
         <component :is="currentComponent"></component>
@@ -222,6 +227,22 @@ header {
 .update-info {
   font-size: 0.8rem;
   color: #888;
+}
+
+.feedback-link {
+  margin-top: 10px;
+}
+
+.feedback-link a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.feedback-link a:hover {
+  color: #333;
+  text-decoration: underline;
 }
 
 footer {
