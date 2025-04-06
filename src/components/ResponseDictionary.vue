@@ -234,75 +234,87 @@ const features = [
         alt: 'Retro Snapshot效果'
       },
       { 
+        name: 'X光片', 
+        description: 'X光片风格',
+        filename: 'hot/17.webp',  // X光片兔子图
+        alt: 'X光片效果'
+      },
+      { 
         name: '美式复古儿童书籍', 
         description: '美式复古儿童书籍',
-        filename: 'hot/17.webp',  // 美式儿童书封面
+        filename: 'hot/18.webp',  // 美式儿童书封面
         alt: '美式复古儿童书籍风格'
       },
       { 
         name: '可爱萌系', 
         description: '可爱萌系',
-        filename: 'hot/18.webp',  // 可爱卡通女孩图
+        filename: 'hot/19.webp',  // 可爱卡通女孩图
         alt: '可爱萌系风格'
       },
       { 
         name: '少女漫画', 
         description: '少女漫画',
-        filename: 'hot/19.webp',  // 吹泡泡女孩图
+        filename: 'hot/20.webp',  // 吹泡泡女孩图
         alt: '少女漫画风格'
+      },
+      { 
+        name: '美式叛逆风', 
+        description: '美式叛逆风格',
+        filename: 'hot/21.webp',  // 吹泡泡叛逆女孩图
+        alt: '美式叛逆风格'
       },
       { 
         name: 'Nakada Ikumi', 
         description: 'Nakada Ikumi',
-        filename: 'hot/20.webp',  // 泡泡女孩水彩图
+        filename: 'hot/22.webp',  // 泡泡女孩水彩图
         alt: 'Nakada Ikumi风格'
       },
       { 
         name: '老式绘本', 
         description: '老式绘本 欧美绘本',
-        filename: 'hot/21.webp',  // 爱丽丝梦游仙境图
+        filename: 'hot/23.webp',  // 爱丽丝梦游仙境图
         alt: '老式绘本风格'
       },
       { 
         name: '卡哇伊', 
         description: '卡哇伊',
-        filename: 'hot/22.webp',  // 粉色女孩图
+        filename: 'hot/24.webp',  // 粉色女孩图
         alt: '卡哇伊风格'
       },
       { 
         name: '扁平插画', 
         description: '高饱和度，扁平画面风格，粗线条',
-        filename: 'hot/23.webp',  // 橙色猫咪图
+        filename: 'hot/25.webp',  // 橙色猫咪图
         alt: '扁平插画风格'
       },
       { 
         name: '互联网怀旧风', 
         description: '互联网怀旧风',
-        filename: 'hot/24.webp',  // 蓝色喷泉图
+        filename: 'hot/26.webp',  // 蓝色喷泉图
         alt: '互联网怀旧风格'
       },
       { 
         name: '复古亮闪闪', 
         description: '复古亮闪闪',
-        filename: 'hot/25.webp',  // 牛角面包图
+        filename: 'hot/27.webp',  // 牛角面包图
         alt: '复古亮闪效果'
       },
       { 
         name: '九宫格表情包', 
         description: '九宫格表情包',
-        filename: 'hot/26.webp',  // 猫咪表情包图
+        filename: 'hot/28.webp',  // 猫咪表情包图
         alt: '九宫格表情包'
       },
       { 
         name: '绘本手稿风', 
         description: '绘本手稿风',
-        filename: 'hot/27.webp',  // 商务人士图
+        filename: 'hot/29.webp',  // 商务人士图
         alt: '绘本手稿风格'
       },
       { 
         name: '古早四格漫画风', 
         description: '古早四格漫画风',
-        filename: 'hot/28.webp',  // 商务人士走路图
+        filename: 'hot/30.webp',  // 商务人士走路图
         alt: '古早四格漫画风格'
       }
     ]
