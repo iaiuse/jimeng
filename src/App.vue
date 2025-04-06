@@ -48,7 +48,7 @@
               <h4>关注我们</h4>
               <ul class="social-list">
                 <li>
-                  <a href="https://github.com/waytoagi" target="_blank" class="social-link">
+                  <a href="https://github.com/iaiuse" target="_blank" class="social-link">
                     <i class="fab fa-github"></i>
                     GitHub
                     <div class="qr-tooltip">
@@ -68,7 +68,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="https://xiaohongshu.com" target="_blank" class="social-link">
+                  <a href="https://www.xiaohongshu.com/user/profile/5b2bc6dbf7e8b97ff70a63b2" target="_blank" class="social-link">
                     <i class="fas fa-book"></i>
                     小红书
                     <div class="qr-tooltip">
@@ -78,7 +78,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="https://mp.weixin.qq.com" target="_blank" class="social-link">
+                  <a href="https://mp.weixin.qq.com/s/Eh8vlal4L02eToTOlaeFww" target="_blank" class="social-link">
                     <i class="fab fa-weixin"></i>
                     公众号
                     <div class="qr-tooltip">
