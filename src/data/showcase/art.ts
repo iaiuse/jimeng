@@ -50,19 +50,19 @@ export const artItems = [
   {
     name: '山水意境',
     description: '传统水墨山水画',
-    filename: 'art/image009.webp',
+    filename: 'art/image019.webp',
     alt: '山水意境'
   },
   {
     name: '秋日溪畔',
     description: '溪边落叶自然景色',
-    filename: 'art/image010.webp',
+    filename: 'art/image020.webp',
     alt: '秋日溪畔'
   },
   {
     name: '荷塘月色',
     description: '水墨荷花夜景意境',
-    filename: 'art/image011.webp',
+    filename: 'art/image021.webp',
     alt: '荷塘月色'
   }
 ]
