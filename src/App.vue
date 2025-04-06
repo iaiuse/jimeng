@@ -3,47 +3,21 @@
     <header>
       <div class="header-container container">
         <a href="#" class="logo">
-          <img src="/images/waytoagi.png" alt="ByteDance Logo">
           即梦图片3.0
         </a>
         <div class="header-right">
-          <div class="main-nav">
-            <button 
+          <nav class="main-nav">
+            <a 
               v-for="tab in tabs" 
               :key="tab.id"
-              class="nav-button"
+              class="nav-link"
               :class="{ active: currentTab === tab.id }"
-              @click="currentTab = tab.id"
+              @click.prevent="currentTab = tab.id"
+              href="#"
             >
               {{ tab.name }}
-            </button>
-          </div>
-          <div class="social-links">
-            <a href="#" class="social-link">
-              <img src="/icons/wechat.svg" alt="关注我们" class="social-icon">
-              <div class="social-tooltip">
-                <div class="social-tooltip-title">扫码关注我们</div>
-                <div class="social-tooltip-qrcode">
-                  <img src="/images/waytoagi.png" alt="微信公众号二维码">
-                </div>
-                <div class="social-tooltip-links">
-                  <a href="https://github.com/iaiuse" target="_blank" class="social-tooltip-link">
-                    <img src="/icons/github.svg" alt="GitHub">
-                    GitHub
-                  </a>
-                  <a href="https://mp.weixin.qq.com" target="_blank" class="social-tooltip-link">
-                    <img src="/icons/wechat.svg" alt="公众号">
-                    AI决策者洞察
-                  </a>
-                  <a href="https://web.okjike.com/u/_大雨_" target="_blank" class="social-tooltip-link">
-                    <img src="/icons/jike.svg" alt="即刻">
-                    _大雨_
-                  </a>
-                </div>
-              </div>
             </a>
-          </div>
-        </div>
+          </nav>
       </div>
     </header>
 
@@ -71,23 +45,45 @@
           <div class="footer-links">
             <div class="footer-column">
               <h4>关注我们</h4>
-              <ul>
+              <ul class="social-list">
                 <li>
-                  <a href="https://jike.xyz" target="_blank" class="social-link">
-                    <img src="/icons/jike.svg" alt="即刻" class="social-icon">
+                  <a href="https://github.com/waytoagi" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                    <div class="qr-tooltip">
+                      <img src="/qr/github-qr.png" alt="GitHub QR Code">
+                      <p>扫码关注我们的GitHub</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://okjk.co/T4JBo0" target="_blank" class="social-link">
+                    <i class="fas fa-compass"></i>
                     即刻
+                    <div class="qr-tooltip">
+                      <img src="/qr/jike-qr.png" alt="即刻 QR Code">
+                      <p>扫码关注我们的即刻</p>
+                    </div>
                   </a>
                 </li>
                 <li>
                   <a href="https://xiaohongshu.com" target="_blank" class="social-link">
-                    <img src="/icons/xiaohongshu.svg" alt="小红书" class="social-icon">
+                    <i class="fas fa-book"></i>
                     小红书
+                    <div class="qr-tooltip">
+                      <img src="/qr/xiaohongshu-qr.png" alt="小红书 QR Code">
+                      <p>扫码关注我们的小红书</p>
+                    </div>
                   </a>
                 </li>
                 <li>
                   <a href="https://mp.weixin.qq.com" target="_blank" class="social-link">
-                    <img src="/icons/wechat.svg" alt="公众号" class="social-icon">
+                    <i class="fab fa-weixin"></i>
                     公众号
+                    <div class="qr-tooltip">
+                      <img src="/qr/wechat-qr.png" alt="公众号 QR Code">
+                      <p>扫码关注我们的公众号</p>
+                    </div>
                   </a>
                 </li>
               </ul>
@@ -151,9 +147,10 @@ body {
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 20px;
+  width: 100%;
 }
 
 /* Header styles */
@@ -169,7 +166,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 15px 20px;
 }
 
 .logo {
@@ -189,7 +186,40 @@ header {
 .header-right {
   display: flex;
   align-items: center;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
   gap: 30px;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0066cc;
+}
+
+.nav-link.active {
+  color: #0066cc;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0066cc;
 }
 
 .social-links {
@@ -306,36 +336,6 @@ header {
   height: 18px;
 }
 
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-button {
-  padding: 12px 25px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  color: #333;
-  font-weight: 500;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.nav-button:hover {
-  background-color: #f5f9ff;
-  border-color: #0066cc;
-  color: #0066cc;
-}
-
-.nav-button.active {
-  background-color: #0066cc;
-  color: white;
-  border-color: #0066cc;
-}
-
 /* Main content styles */
 .main-content {
   padding: 50px 0;
@@ -431,43 +431,116 @@ footer {
 }
 
 /* Responsive styles */
-@media (max-width: 1200px) {
-  .social-link span {
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .main-nav {
+    width: 100%;
+    overflow-x: auto;
+    padding: 5px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 20px;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+}
+
+/* Footer styles */
+.social-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.social-link i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover i {
+  transform: scale(1.1);
+}
+
+.qr-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  width: 160px;
+  text-align: center;
+}
+
+.qr-tooltip img {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.qr-tooltip p {
+  color: #333;
+  font-size: 12px;
+  margin: 0;
+}
+
+.social-link:hover .qr-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  .qr-tooltip {
     display: none;
   }
   
-  .social-links {
+  .social-list {
     gap: 10px;
   }
   
   .social-link {
-    padding: 6px;
-  }
-}
-
-@media (max-width: 960px) {
-  .header-right {
-    gap: 15px;
+    padding: 6px 10px;
   }
   
-  .social-links {
-    margin-left: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .social-links {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 1.3rem;
-  }
-  
-  .handbook-header h1 {
-    font-size: 1.8rem;
+  .social-link i {
+    font-size: 18px;
   }
 }
 </style> 
