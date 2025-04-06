@@ -18,6 +18,7 @@
               {{ tab.name }}
             </a>
           </nav>
+        </div>
       </div>
     </header>
 
