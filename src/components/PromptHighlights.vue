@@ -174,13 +174,13 @@ const previewImages = ref<any[]>([])
 const previewIndex = ref(0)
 
 // 打开预览
-const openPreview = (images: (ImageItem | VocabItem)[], index: number): void => {
+const openPreview = (images: (ImageItem | VocabItem)[], clickedIndex: number): void => {
   previewImages.value = images.map(img => ({
     src: getImageUrl(img.filename),
     title: img.alt,
     description: img.description || img.alt
   }))
-  previewIndex.value = index
+  previewIndex.value = clickedIndex
   isPreviewVisible.value = true
 }
 

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 
 const props = defineProps<{
   isVisible: boolean
@@ -31,6 +31,11 @@ const emit = defineEmits<{
 }>()
 
 const currentIndex = ref(props.initialIndex)
+
+// 监听 initialIndex 的变化
+watch(() => props.initialIndex, (newIndex) => {
+  currentIndex.value = newIndex
+})
 
 const currentImage = computed(() => props.images[currentIndex.value]?.src)
 const currentTitle = computed(() => props.images[currentIndex.value]?.title)
