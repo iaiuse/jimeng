@@ -1,7 +1,7 @@
 <template>
   <section id="response-dictionary">
     <div class="section-header">
-      <div class="section-number">3</div>
+      <div class="section-number">4</div>
       <h2 class="section-title">更多展示</h2>
     </div>
     

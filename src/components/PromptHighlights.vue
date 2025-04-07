@@ -1,130 +1,122 @@
 <template>
-  <section class="prompt-highlights">
+  <section id="prompt-highlights">
     <div class="section-header">
       <div class="section-number">2</div>
       <h2 class="section-title">提示词秘籍</h2>
     </div>
+    
+    <!-- 浮动导航菜单 -->
+    <div class="floating-nav" :class="{ 'is-visible': showFloatingNav }">
+      <div class="nav-items">
+        <div v-for="section in promptSections" 
+             :key="section.id" 
+             class="nav-item"
+             :class="{ 'active': activeSection === `section-${section.id}` }"
+             @click="scrollToSection(`section-${section.id}`)">
+          <div class="nav-item-content">
+            <div class="nav-item-title">{{ section.title }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="highlight-content">
-      <div v-for="section in promptSections" :key="section.id" class="highlight-section">
-        <h3 class="highlight-title">{{ section.title }}</h3>
+    <div class="feature-grid">
+      <!-- 语言表达部分 -->
+      <div class="feature-card" :id="`section-${promptSections[0].id}`">
+        <h3><span>{{ promptSections[0].title }}</span></h3>
+        <p>{{ promptSections[0].description }}</p>
+        <div class="highlight-note">{{ promptSections[0].note }}</div>
         
-        <!-- 语言表达部分 -->
-        <template v-if="section.id === 'language'">
-          <p class="highlight-desc">{{ section.description }}</p>
-          <div class="highlight-note">{{ section.note }}</div>
-          <div class="example-grid">
-            <div v-for="(example, index) in section.examples" 
-                 :key="index" 
-                 :class="['example-card', { 'example-card-horizontal': example.filename === 'image004.webp' }]"
-                 @click="openPreview(section.examples, index)">
-              <div :class="{'example-image-container': example.filename === 'image004.webp'}">
-                <img :src="getImageUrl(example.filename)" :alt="example.alt">
-                <div class="example-info" v-if="example.filename !== 'image004.webp'">
-                  <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
-                </div>
+        <div class="image-grid">
+          <div v-for="(example, index) in promptSections[0].examples || []" 
+               :key="index" 
+               :class="[
+                 'image-item',
+                 { 'image-item-horizontal': example.filename === 'image004.webp' }
+               ]"
+               @click="openPreview(promptSections[0].examples || [], index)">
+            <div class="category-label">
+              <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
+            </div>
+            <div class="image-wrapper" :class="{ 'horizontal-image': example.filename === 'image004.webp' }">
+              <img :src="getImageUrl(example.filename)" :alt="example.alt" loading="lazy">
+              <div class="image-overlay">
+                <div class="image-title">{{ example.alt }}</div>
+                <div class="image-description">{{ example.description }}</div>
               </div>
-              <div :class="{'example-content-container': example.filename === 'image004.webp'}">
-                <div class="example-info" v-if="example.filename === 'image004.webp'">
-                  <span v-for="tag in example.tags" :key="tag" class="example-tag">{{ tag }}</span>
-                </div>
-                <div v-if="example.details" class="example-details">
-                  <div class="detail-section">
-                    <strong>风格：</strong>
-                    <span>{{ example.details.style }}</span>
-                  </div>
-                  <div class="detail-section" v-if="typeof example.details.composition === 'string'">
-                    <strong>构图：</strong>
-                    <span>{{ example.details.composition }}</span>
-                  </div>
-                  <div class="detail-section" v-else-if="example.details.composition">
-                    <strong>构图：</strong>
-                    <div class="composition-details">
-                      <div class="composition-item">布局：{{ example.details.composition.layout }}</div>
-                      <div class="composition-item">视角：{{ example.details.composition.viewpoint }}</div>
-                      <div class="composition-item">景别：{{ example.details.composition.range }}</div>
-                    </div>
-                  </div>
-                  <div class="detail-section">
-                    <strong>元素：</strong>
-                    <div class="element-tags">
-                      <span v-for="element in example.details.elements" 
-                            :key="element" 
-                            class="element-tag">
-                        {{ element }}
-                      </span>
-                    </div>
-                  </div>
-                  <div class="detail-section">
-                    <strong>色彩：</strong>
-                    <span v-if="typeof example.details.colors === 'string'">
-                      {{ example.details.colors }}
-                    </span>
-                    <div v-else class="color-details">
-                      <div>主色调：{{ example.details.colors.main }}</div>
-                      <div>配色：{{ example.details.colors.palette }}</div>
-                    </div>
-                  </div>
-                  <div class="detail-section" v-if="example.details.effects">
-                    <strong>特效：</strong>
-                    <div class="effects-list">
-                      <span v-for="effect in example.details.effects" 
-                            :key="effect" 
-                            class="effect-item">
-                        {{ effect }}
-                      </span>
-                    </div>
-                  </div>
-                  <div class="detail-section" v-if="example.details.text">
-                    <strong>文字：</strong>
-                    <div class="text-details">
-                      <p>内容：{{ example.details.text.content }}</p>
-                      <p>位置：{{ example.details.text.position }}</p>
-                      <p>补充：{{ example.details.text.additional }}</p>
-                    </div>
+            </div>
+            <div v-if="example.details" 
+                 :class="[
+                   'image-caption',
+                   { 'horizontal-caption': example.filename === 'image004.webp' }
+                 ]">
+              <div class="detail-section" v-for="(value, key) in example.details" :key="key">
+                <strong>{{ key }}：</strong>
+                <span v-if="typeof value === 'string'">{{ value }}</span>
+                <div v-else class="detail-content">
+                  <div v-for="(item, itemKey) in value" :key="itemKey">
+                    {{ typeof item === 'string' ? item : `${itemKey}: ${item}` }}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </template>
+        </div>
+      </div>
 
-        <!-- 画面描述部分 -->
-        <template v-if="section.id === 'description'">
-          <div class="description-points">
-            <div v-for="point in section.points" :key="point.label" class="point">
-              <strong>{{ point.label }}：</strong>
-              <span>{{ point.content }}</span>
-            </div>
+      <!-- 画面描述部分 -->
+      <div class="feature-card" :id="`section-${promptSections[1].id}`">
+        <h3><span>{{ promptSections[1].title }}</span></h3>
+        <div class="description-points">
+          <div v-for="point in promptSections[1].points" 
+               :key="point.label" 
+               class="point">
+            <strong>{{ point.label }}：</strong>
+            <span>{{ point.content }}</span>
           </div>
-        </template>
+        </div>
+      </div>
 
-        <!-- 专业词汇部分 -->
-        <template v-if="section.id === 'vocabulary'">
-          <div class="vocab-examples">
-            <div v-for="(item, index) in section.items" 
-                 :key="item.cn" 
-                 class="vocab-item"
-                 @click="openPreview(section.items, index)">
-              <img :src="getImageUrl(item.filename)" :alt="item.alt">
+      <!-- 专业词汇部分 -->
+      <div class="feature-card" :id="`section-${promptSections[2].id}`">
+        <h3><span>{{ promptSections[2].title }}</span></h3>
+        <div class="image-grid">
+          <div v-for="(item, index) in promptSections[2].items || []" 
+               :key="item.cn" 
+               class="image-item"
+               @click="openPreview(promptSections[2].items || [], index)">
+            <div class="image-wrapper">
+              <img :src="getImageUrl(item.filename)" :alt="item.alt" loading="lazy">
+              <div class="image-overlay">
+                <div class="image-title">{{ item.cn }}</div>
+                <div class="image-description">{{ item.en }}</div>
+              </div>
+            </div>
+            <div class="image-caption">
               <div class="vocab-pair">
                 <span class="vocab-cn">{{ item.cn }}</span>
                 <span class="vocab-en">{{ item.en }}</span>
               </div>
             </div>
           </div>
-        </template>
+        </div>
       </div>
 
       <!-- 场景应用推荐 -->
-      <div class="highlight-section">
-        <h3 class="highlight-title">场景应用推荐</h3>
-        <div class="scene-applications">
+      <div class="feature-card" id="section-applications">
+        <h3><span>场景应用推荐</span></h3>
+        <div class="image-grid">
           <div v-for="scene in sceneApplications" 
                :key="scene.id" 
-               class="scene-card">
-            <img :src="getImageUrl(scene.image)" :alt="scene.alt" class="scene-image">
-            <div class="scene-info">
+               class="image-item">
+            <div class="image-wrapper">
+              <img :src="getImageUrl(scene.image)" :alt="scene.alt" loading="lazy">
+              <div class="image-overlay">
+                <div class="image-title">{{ scene.label }}</div>
+                <div class="image-description">{{ scene.description }}</div>
+              </div>
+            </div>
+            <div class="image-caption">
               <div class="scene-tag">{{ scene.label }}</div>
               <div class="scene-description">{{ scene.description }}</div>
             </div>
@@ -143,20 +135,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import ImagePreview from './ImagePreview.vue'
 
-const getImageUrl = (filename) => {
+interface ImageItem {
+  filename: string;
+  alt: string;
+  description?: string;
+  tags?: string[];
+  details?: Record<string, any>;
+}
+
+interface VocabItem {
+  filename: string;
+  alt: string;
+  description?: string;
+  cn: string;
+  en: string;
+}
+
+interface PromptSection {
+  id: string;
+  title: string;
+  description?: string;
+  note?: string;
+  examples?: ImageItem[];
+  points?: Array<{ label: string; content: string }>;
+  items?: VocabItem[];
+}
+
+const getImageUrl = (filename: string): string => {
   return `https://jimeng-image.iaiuse.com/3.0/prompthighlights/${filename}`;
 }
 
 // 图片预览相关状态
 const isPreviewVisible = ref(false)
-const previewImages = ref([])
+const previewImages = ref<any[]>([])
 const previewIndex = ref(0)
 
 // 打开预览
-const openPreview = (images, index) => {
+const openPreview = (images: (ImageItem | VocabItem)[], index: number): void => {
   previewImages.value = images.map(img => ({
     src: getImageUrl(img.filename),
     title: img.alt,
@@ -171,7 +189,7 @@ const closePreview = () => {
   isPreviewVisible.value = false
 }
 
-const promptSections = ref([
+const promptSections = ref<PromptSection[]>([
   {
     id: 'language',
     title: '语言表达的精准性',
@@ -312,430 +330,81 @@ const sceneApplications = ref([
     alt: '科技风格背景'
   }
 ])
+
+// 添加浮动导航相关逻辑
+const showFloatingNav = ref(false)
+const activeSection = ref('')
+
+// 滚动到指定区域
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+// 检查滚动位置并更新导航状态
+const checkScroll = () => {
+  showFloatingNav.value = window.scrollY > 200
+
+  const sections = [...promptSections.value.map(s => `section-${s.id}`), 'section-applications']
+  for (const sectionId of sections) {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        activeSection.value = sectionId
+        break
+      }
+    }
+  }
+}
+
+// 监听滚动事件
+onMounted(() => {
+  window.addEventListener('scroll', checkScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll)
+})
 </script>
 
-<style scoped>
-.prompt-highlights {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: var(--text-color);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
+<style>
+@import '../styles/shared-section.css';
 
-.section-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.5rem;
-}
-
-.section-number {
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--text-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  margin-right: 1rem;
-  color: var(--text-color);
-}
-
-.section-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  color: var(--text-color);
-}
-
-.highlight-section {
-  margin-bottom: 3rem;
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px var(--card-shadow);
-}
-
-.highlight-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: var(--text-color);
-  position: relative;
-  padding-left: 1rem;
-}
-
-.highlight-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 1.25em;
-  background: var(--text-color);
-  border-radius: 2px;
-}
-
-.highlight-desc {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.highlight-note {
-  font-size: 0.875rem;
-  color: var(--text-color);
-  opacity: 0.7;
-  font-style: italic;
-  margin-bottom: 1.5rem;
-  padding: 0.75rem;
-  background: var(--bg-color);
-  border-radius: 6px;
-  border-left: 4px solid var(--border-color);
-}
-
-.example-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.example-card {
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--card-bg);
-  box-shadow: 0 1px 3px var(--card-shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.example-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px var(--card-shadow);
-}
-
-.example-card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  aspect-ratio: 16/9;
-}
-
-.example-info {
-  padding: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.example-tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  background: var(--bg-color);
-  border-radius: 4px;
-  color: var(--text-color);
-  opacity: 0.8;
-  transition: background-color 0.2s ease;
-}
-
-.example-tag:hover {
-  background: var(--nav-hover-bg);
-  opacity: 1;
-}
-
-.example-details {
-  padding: 1rem;
-  background: var(--bg-color);
-  border-radius: 6px;
-  margin-top: 1rem;
-}
-
-.detail-section {
-  margin-bottom: 0.5rem;
-}
-
-.detail-section strong {
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-.detail-section span {
-  font-size: 0.875rem;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.composition-details {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.element-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-
-.element-tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--bg-color);
-  border-radius: 4px;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.color-details {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.effects-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-
-.effect-item {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--bg-color);
-  border-radius: 4px;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.text-details {
-  margin-top: 0.5rem;
-}
-
-.text-details p {
-  margin: 0.25rem 0;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.description-points {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.point {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.75rem;
-  background: var(--bg-color);
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
-}
-
-.point:hover {
-  background: var(--nav-hover-bg);
-}
-
-.point strong {
-  min-width: 5rem;
-  color: var(--text-color);
-  font-weight: 500;
-}
-
-.vocab-examples {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-
-.vocab-item {
-  text-align: center;
-  transition: transform 0.2s ease;
-}
-
-.vocab-item:hover {
-  transform: translateY(-4px);
-}
-
-.vocab-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px var(--card-shadow);
-  aspect-ratio: 1;
-  object-fit: cover;
-}
-
-.vocab-pair {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.vocab-cn {
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-.vocab-en {
-  color: var(--text-color);
-  opacity: 0.7;
-  font-size: 0.875rem;
-  font-family: 'Courier New', monospace;
-}
-
-.scene-applications {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.scene-card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px var(--card-shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.scene-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px var(--card-shadow);
-}
-
-.scene-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.scene-info {
-  padding: 1rem;
-}
-
-.scene-tag {
-  font-weight: 500;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
-
-.scene-description {
-  font-size: 0.875rem;
-  color: var(--text-color);
-  opacity: 0.7;
-}
-
-.example-card.example-card-horizontal {
+.image-item-horizontal {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: row;
   gap: 2rem;
-  max-width: 100%;
-  margin-top: 1rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
   padding: 1.5rem;
 }
 
-.example-image-container {
-  width: 100%;
-  height: 100%;
+.image-item-horizontal .horizontal-image {
+  flex: 0 0 50%;
+  max-width: 50%;
 }
 
-.example-image-container img {
+.image-item-horizontal .horizontal-caption {
+  flex: 1;
+  padding: 0;
+  margin-top: 0;
+}
+
+.image-item-horizontal .category-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+}
+
+.horizontal-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-}
-
-.example-content-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.example-card-horizontal .example-details {
-  padding: 0;
-  background: transparent;
-}
-
-.composition-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.composition-item {
-  font-size: 0.875rem;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.color-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  .prompt-highlights {
-    padding: 1rem;
-  }
-  
-  .highlight-section {
-    padding: 1.5rem;
-  }
-  
-  .example-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .vocab-examples {
-    grid-template-columns: 1fr;
-  }
-  
-  .point {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .point strong {
-    min-width: auto;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .highlight-title {
-    font-size: 1.1rem;
-  }
-  
-  .example-card.example-card-horizontal {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .example-image-container {
-    min-height: 200px;
-  }
-  
-  .scene-applications {
-    grid-template-columns: 1fr;
-  }
-  
-  .scene-image {
-    height: 140px;
-  }
 }
 </style>
+
