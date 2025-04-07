@@ -6,7 +6,11 @@
     </div>
     
     <!-- 添加浮动导航菜单 -->
-    <div class="floating-nav" :class="{ 'is-visible': showFloatingNav }">
+    <div class="floating-nav" :class="{ 'is-visible': showFloatingNav && !isNavManuallyHidden }">
+      <!-- 导航菜单内的切换按钮 -->
+      <div class="nav-toggle" @click="toggleNavVisibility">
+        <span class="toggle-icon">&gt;&gt;</span>
+      </div>
       <div class="nav-items">
         <div v-for="feature in features" 
              :key="feature.id" 
@@ -19,6 +23,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 单独的导航切换按钮，仅在菜单隐藏时可见 -->
+    <div class="nav-toggle-button" 
+         :class="{ 'is-visible': showFloatingNav && isNavManuallyHidden }" 
+         @click="toggleNavVisibility">
+      <span class="toggle-icon">&lt;&lt;</span>
     </div>
 
     <div class="feature-grid">
@@ -395,6 +406,12 @@ const features = [
 // 浮动导航相关
 const showFloatingNav = ref(false)
 const activeSection = ref('')
+const isNavManuallyHidden = ref(false)
+
+// 切换导航菜单的显示/隐藏状态
+const toggleNavVisibility = () => {
+  isNavManuallyHidden.value = !isNavManuallyHidden.value
+}
 
 // 滚动到指定区域
 const scrollToSection = (sectionId) => {
@@ -435,4 +452,68 @@ onUnmounted(() => {
 
 <style>
 @import '../styles/shared-section.css';
+
+/* 导航菜单内的切换按钮样式 */
+.nav-toggle {
+  text-align: center;
+  padding: 8px 0;
+  cursor: pointer;
+  color: var(--link-color);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+/* 单独的导航切换按钮样式 */
+.nav-toggle-button {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px var(--card-shadow);
+  padding: 8px 15px;
+  z-index: 100;
+  cursor: pointer;
+  color: var(--link-color);
+  transition: all 0.2s ease;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+}
+
+.nav-toggle-button.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-toggle-button:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+/* 当滚动到一定位置时显示切换按钮 */
+@media (min-width: 769px) {
+  .nav-toggle-button {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 </style>
