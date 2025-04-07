@@ -3,7 +3,7 @@
     align-items: center;
     margin-bottom: 25px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
   }
   
   .section-number {
@@ -12,7 +12,7 @@
     justify-content: center;
     width: 36px;
     height: 36px;
-    background-color: #0066cc;
+    background-color: var(--link-color);
     color: white;
     border-radius: 50%;
     margin-right: 15px;
@@ -22,7 +22,7 @@
   
   .section-title {
     font-size: 1.8rem;
-    color: #333;
+    color: var(--text-color);
     font-weight: 600;
   }
   
@@ -35,9 +35,9 @@
   }
   
   .feature-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px var(--card-shadow);
     padding: 35px;
     width: 100%;
   }
@@ -45,19 +45,20 @@
   .feature-card h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--text-color);
     display: flex;
     align-items: center;
   }
   
   .feature-card h3 span {
-    color: #0066cc;
+    color: var(--link-color);
     margin-right: 12px;
     font-weight: 600;
   }
   
   .feature-card p {
-    color: #666;
+    color: var(--text-color);
+    opacity: 0.8;
     margin-bottom: 25px;
     font-size: 1.2rem;
     line-height: 1.6;
@@ -66,17 +67,18 @@
   .sub-feature {
     margin-top: 35px;
     padding-top: 35px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
   }
   
   .sub-feature h4 {
     font-size: 1.4rem;
-    color: #444;
+    color: var(--text-color);
     margin-bottom: 15px;
   }
   
   .sub-feature p {
-    color: #666;
+    color: var(--text-color);
+    opacity: 0.8;
     margin-bottom: 25px;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -94,7 +96,7 @@
     cursor: pointer;
     overflow: visible;
     border-radius: 8px;
-    background-color: white;
+    background-color: var(--card-bg);
     transition: transform 0.3s ease;
   }
   
@@ -103,8 +105,8 @@
     overflow: hidden;
     border-radius: 8px;
     aspect-ratio: 16/9;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 8px var(--card-shadow);
   }
   
   .image-item img {
@@ -146,13 +148,14 @@
   .image-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 4px;
   }
   
   .image-description {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-color);
+    opacity: 0.8;
     line-height: 1.4;
   }
   
@@ -220,9 +223,9 @@
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px var(--card-shadow);
     padding: 15px 0;
     opacity: 0;
     visibility: hidden;
@@ -257,14 +260,15 @@
   }
   
   .nav-item-title {
-    color: #333;
+    color: var(--text-color);
     font-size: 1rem;
     font-weight: 500;
     transition: color 0.2s ease;
   }
   
   .nav-item-subtitle {
-    color: #666;
+    color: var(--text-color);
+    opacity: 0.8;
     font-size: 0.85rem;
     white-space: nowrap;
     overflow: hidden;
@@ -273,29 +277,29 @@
   }
   
   .nav-item:hover {
-    background: #f5f9ff;
-    border-left-color: #0066cc;
+    background: var(--nav-hover-bg);
+    border-left-color: var(--link-color);
   }
   
   .nav-item:hover .nav-item-title {
-    color: #0066cc;
+    color: var(--link-color);
   }
   
   .nav-item:hover .nav-item-subtitle {
-    color: #0066cc;
+    color: var(--link-color);
   }
   
   .nav-item.active {
-    background: #f5f9ff;
-    border-left-color: #0066cc;
+    background: var(--nav-hover-bg);
+    border-left-color: var(--link-color);
   }
   
   .nav-item.active .nav-item-title {
-    color: #0066cc;
+    color: var(--link-color);
   }
   
   .nav-item.active .nav-item-subtitle {
-    color: #0066cc;
+    color: var(--link-color);
   }
   
   /* 响应式调整 */

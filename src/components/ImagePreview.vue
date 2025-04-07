@@ -101,6 +101,10 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .preview-image {
@@ -154,7 +158,7 @@ onUnmounted(() => {
 
 .preview-info {
   margin-top: 20px;
-  color: white;
+  color: var(--text-color);
   text-align: center;
   max-width: 600px;
 }

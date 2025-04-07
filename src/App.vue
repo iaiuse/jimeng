@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" :class="{ 'dark-mode': isDarkMode }">
     <header>
       <div class="header-container container">
         <a href="#" class="logo">
@@ -23,6 +23,13 @@
             >
               {{ tab.name }}
             </a>
+            <button 
+              class="theme-toggle"
+              @click="toggleTheme"
+              :title="isDarkMode ? '切换到亮色模式' : '切换到暗色模式'"
+            >
+              <i class="fas" :class="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+            </button>
           </nav>
         </div>
       </div>
@@ -32,7 +39,7 @@
       <div class="container">
         <div class="handbook-header">
           <h1>即梦图片3.0模型 提示词攻略手册</h1>
-          <p>探索新一代AI图像生成模型，实现真实、高清、专业的视觉创作</p>
+          <p>探索新一代AI图像生成模型，实现真实、高清、专业的视觉创作。立即<a href="https://jimeng.jianying.com/" target="_blank" rel="noopener noreferrer">体验即梦</a></p>
           <div class="update-info">最新更新时间: 2025年4月1日</div>
           <div class="feedback-link">
             <a href="https://github.com/iaiuse/jimeng/issues/new" target="_blank" rel="noopener noreferrer">
@@ -100,7 +107,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import ModelHighlights from './components/ModelHighlights.vue'
 import PromptHighlights from './components/PromptHighlights.vue'
 import ResponseDictionary from './components/ResponseDictionary.vue'
@@ -115,6 +122,31 @@ const tabs = [
 
 const currentTab = ref('model-highlights')
 const isMenuOpen = ref(false)
+const isDarkMode = ref(false)
+
+// 从 localStorage 读取主题设置
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme) {
+    isDarkMode.value = savedTheme === 'dark'
+  } else {
+    // 如果没有保存的主题，则根据系统偏好设置
+    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+  updateTheme()
+})
+
+// 切换主题
+const toggleTheme = () => {
+  isDarkMode.value = !isDarkMode.value
+  updateTheme()
+}
+
+// 更新主题
+const updateTheme = () => {
+  localStorage.setItem('theme', isDarkMode.value ? 'dark' : 'light')
+  document.documentElement.classList.toggle('dark-mode', isDarkMode.value)
+}
 
 const currentComponent = computed(() => {
   switch (currentTab.value) {
@@ -138,9 +170,37 @@ const toggleMenu = () => {
 
 <style>
 /* 保留所有组件特定样式 */
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --header-bg: #fff;
+  --header-shadow: rgba(0, 0, 0, 0.1);
+  --nav-hover-bg: #f5f5f5;
+  --nav-active-bg: #eee;
+  --link-color: #0066cc;
+  --border-color: #eee;
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #fff;
+  --header-bg: #242424;
+  --header-shadow: rgba(0, 0, 0, 0.3);
+  --nav-hover-bg: #333;
+  --nav-active-bg: #404040;
+  --link-color: #66b3ff;
+  --border-color: #333;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 header {
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--header-bg);
+  box-shadow: 0 1px 3px var(--header-shadow);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -165,7 +225,7 @@ header {
   gap: 12px;
   font-weight: 600;
   font-size: 1.5rem;
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -193,7 +253,7 @@ header {
 }
 
 .nav-link {
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.2s;
   padding: 8px 16px;
@@ -201,12 +261,12 @@ header {
 }
 
 .nav-link:hover {
-  background-color: #f5f5f5;
+  background-color: var(--nav-hover-bg);
 }
 
 .nav-link.active {
   font-weight: bold;
-  background-color: #eee;
+  background-color: var(--nav-active-bg);
 }
 
 .handbook-header {
@@ -216,17 +276,17 @@ header {
 .handbook-header h1 {
   font-size: 2rem;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--text-color);
 }
 
 .handbook-header p {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-color);
 }
 
 .update-info {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--text-color);
 }
 
 .feedback-link {
@@ -234,14 +294,14 @@ header {
 }
 
 .feedback-link a {
-  color: #666;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
 .feedback-link a:hover {
-  color: #333;
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -357,8 +417,8 @@ footer {
 
 /* 修改主内容区域背景色 */
 .main-content {
-  background-color: #fff;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   min-height: 100vh;
   padding: 40px 0;
 }
@@ -380,7 +440,7 @@ footer {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: #333;
+    background-color: var(--text-color);
     margin: 6px 0;
     transition: all 0.3s ease;
     position: absolute;
@@ -425,7 +485,7 @@ footer {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--bg-color);
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
@@ -443,5 +503,26 @@ footer {
   .social-link {
     margin: 10px;
   }
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.theme-toggle i {
+  font-size: 1.2rem;
 }
 </style> 

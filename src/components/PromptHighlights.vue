@@ -319,7 +319,7 @@ const sceneApplications = ref([
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  color: #2c3e50;
+  color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -327,41 +327,43 @@ const sceneApplications = ref([
   display: flex;
   align-items: center;
   margin-bottom: 2.5rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 1.5rem;
 }
 
 .section-number {
   width: 40px;
   height: 40px;
-  border: 2px solid #2c3e50;
+  border: 2px solid var(--text-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   margin-right: 1rem;
+  color: var(--text-color);
 }
 
 .section-title {
   font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: -0.5px;
+  color: var(--text-color);
 }
 
 .highlight-section {
   margin-bottom: 3rem;
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--card-shadow);
 }
 
 .highlight-title {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #2c3e50;
+  color: var(--text-color);
   position: relative;
   padding-left: 1rem;
 }
@@ -374,7 +376,7 @@ const sceneApplications = ref([
   transform: translateY(-50%);
   width: 4px;
   height: 1.25em;
-  background: #2c3e50;
+  background: var(--text-color);
   border-radius: 2px;
 }
 
@@ -382,18 +384,20 @@ const sceneApplications = ref([
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #4a5568;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .highlight-note {
   font-size: 0.875rem;
-  color: #718096;
+  color: var(--text-color);
+  opacity: 0.7;
   font-style: italic;
   margin-bottom: 1.5rem;
   padding: 0.75rem;
-  background: #f7fafc;
+  background: var(--bg-color);
   border-radius: 6px;
-  border-left: 4px solid #e2e8f0;
+  border-left: 4px solid var(--border-color);
 }
 
 .example-grid {
@@ -406,14 +410,14 @@ const sceneApplications = ref([
 .example-card {
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: var(--card-bg);
+  box-shadow: 0 1px 3px var(--card-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .example-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .example-card img {
@@ -433,19 +437,21 @@ const sceneApplications = ref([
 .example-tag {
   font-size: 0.75rem;
   padding: 0.25rem 0.75rem;
-  background: #f1f5f9;
+  background: var(--bg-color);
   border-radius: 4px;
-  color: #475569;
+  color: var(--text-color);
+  opacity: 0.8;
   transition: background-color 0.2s ease;
 }
 
 .example-tag:hover {
-  background: #e2e8f0;
+  background: var(--nav-hover-bg);
+  opacity: 1;
 }
 
 .example-details {
   padding: 1rem;
-  background: #f7fafc;
+  background: var(--bg-color);
   border-radius: 6px;
   margin-top: 1rem;
 }
@@ -456,12 +462,13 @@ const sceneApplications = ref([
 
 .detail-section strong {
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--text-color);
 }
 
 .detail-section span {
   font-size: 0.875rem;
-  color: #4a5568;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .composition-details {
@@ -478,9 +485,10 @@ const sceneApplications = ref([
 .element-tag {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
-  background: #f1f5f9;
+  background: var(--bg-color);
   border-radius: 4px;
-  color: #475569;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .color-details {
@@ -497,9 +505,10 @@ const sceneApplications = ref([
 .effect-item {
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
-  background: #f1f5f9;
+  background: var(--bg-color);
   border-radius: 4px;
-  color: #475569;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .text-details {
@@ -508,6 +517,8 @@ const sceneApplications = ref([
 
 .text-details p {
   margin: 0.25rem 0;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .description-points {
@@ -521,18 +532,18 @@ const sceneApplications = ref([
   align-items: baseline;
   gap: 1rem;
   padding: 0.75rem;
-  background: #f8fafc;
+  background: var(--bg-color);
   border-radius: 6px;
   transition: background-color 0.2s ease;
 }
 
 .point:hover {
-  background: #f1f5f9;
+  background: var(--nav-hover-bg);
 }
 
 .point strong {
   min-width: 5rem;
-  color: #2c3e50;
+  color: var(--text-color);
   font-weight: 500;
 }
 
@@ -556,7 +567,7 @@ const sceneApplications = ref([
   height: auto;
   border-radius: 8px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--card-shadow);
   aspect-ratio: 1;
   object-fit: cover;
 }
@@ -570,11 +581,12 @@ const sceneApplications = ref([
 
 .vocab-cn {
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--text-color);
 }
 
 .vocab-en {
-  color: #64748b;
+  color: var(--text-color);
+  opacity: 0.7;
   font-size: 0.875rem;
   font-family: 'Courier New', monospace;
 }
@@ -587,16 +599,16 @@ const sceneApplications = ref([
 }
 
 .scene-card {
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px var(--card-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .scene-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--card-shadow);
 }
 
 .scene-image {
@@ -611,13 +623,14 @@ const sceneApplications = ref([
 
 .scene-tag {
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--text-color);
   margin-bottom: 0.5rem;
 }
 
 .scene-description {
   font-size: 0.875rem;
-  color: #64748b;
+  color: var(--text-color);
+  opacity: 0.7;
 }
 
 .example-card.example-card-horizontal {
@@ -662,7 +675,8 @@ const sceneApplications = ref([
 
 .composition-item {
   font-size: 0.875rem;
-  color: #4a5568;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .color-details {
