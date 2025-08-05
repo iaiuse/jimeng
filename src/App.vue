@@ -46,6 +46,11 @@
               有意见或想法？欢迎提交反馈 →
             </a>
           </div>
+          <h3>
+            <a href="https://iaiuse.com" target="_blank" rel="noopener noreferrer">
+              作者博客，欢迎交流AI应用落地实践心得 →
+            </a>
+          </h3>
         </div>
 
         <component :is="currentComponent"></component>
